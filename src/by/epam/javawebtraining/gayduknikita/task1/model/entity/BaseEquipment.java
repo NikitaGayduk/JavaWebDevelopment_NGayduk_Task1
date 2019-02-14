@@ -1,10 +1,10 @@
 /*BaseEquipment
  * 1.0
  * 14/02/2019
- *
+ *GaydukNikita
  */
 
-package by.epam.javawebdevelopment.ngayduktask1.model.entity;
+package by.epam.javawebtraining.gayduknikita.task1.model.entity;
 
 /**
  * The BaseEquipment class is a basic
