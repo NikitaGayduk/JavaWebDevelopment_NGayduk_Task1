@@ -48,16 +48,18 @@ public class BaseEquipment {
         return equipmentState;
     }
 
-    public boolean equals(BaseEquipment equip) {
-        if(equip == null){
-            return false;
-        }
-        if((this.price == equip.getPrice())
-                && (this.equipmentState == equip.getEquipmentState())){
+    @Override
+    public boolean equals(Object obj) {
+        BaseEquipment equip1 = (BaseEquipment) obj;
+
+        if(super.equals(obj)){
             return true;
-        } else {
+        }
+        if((obj == null) || (this.getClass() != obj.getClass())){
             return false;
         }
+
+        return (this.price == equip1.getPrice()) && (this.equipmentState == equip1.equipmentState);
     }
 
     //public String toString(){
