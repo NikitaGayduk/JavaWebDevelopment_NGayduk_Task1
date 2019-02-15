@@ -1,6 +1,6 @@
 /*BaseEquipment
- * 1.0
- * 14/02/2019
+ * 1.1
+ * 15/02/2019
  *GaydukNikita
  */
 
@@ -18,7 +18,7 @@ public class BaseEquipment {
     private WearDegree equipmentState;
 
     public BaseEquipment(){
-        price = 100;
+        price = 9999;
         equipmentState = WearDegree.UNBROKEN;
     }
 
@@ -50,7 +50,7 @@ public class BaseEquipment {
 
     @Override
     public boolean equals(Object obj) {
-        BaseEquipment equip1 = (BaseEquipment) obj;
+        BaseEquipment equip = (BaseEquipment) obj;
 
         if(super.equals(obj)){
             return true;
@@ -59,11 +59,24 @@ public class BaseEquipment {
             return false;
         }
 
-        return (this.price == equip1.getPrice()) && (this.equipmentState == equip1.equipmentState);
+        if ((this.price == equip.getPrice()) && (this.equipmentState == equip.equipmentState)){
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    //public String toString(){
-    //
-    //}
+    @Override
+    public String toString() {
+        return "Class name: " + getClass().getName()+ "\n" + "Price: " + price + ", wear degree: " + equipmentState;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + price;
+        result = 31 * result + equipmentState.hashCode();
+        return result;
+    }
 }
 
