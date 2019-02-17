@@ -17,6 +17,8 @@ public class BaseEquipment {
     private int price;
     private WearDegree equipmentState;
 
+
+
     public BaseEquipment(){
         price = 9999;
         equipmentState = WearDegree.UNBROKEN;
@@ -32,6 +34,8 @@ public class BaseEquipment {
         equipmentState = equip.equipmentState;
     }
 
+
+
     public void setPrice(int cost){
         price = cost;
     }
@@ -40,6 +44,7 @@ public class BaseEquipment {
         return price;
     }
 
+
     public void setEquipmentState(WearDegree state){
         equipmentState = state;
     }
@@ -47,6 +52,7 @@ public class BaseEquipment {
     public WearDegree getEquipmentState(){
         return equipmentState;
     }
+
 
     @Override
     public boolean equals(Object obj) {
