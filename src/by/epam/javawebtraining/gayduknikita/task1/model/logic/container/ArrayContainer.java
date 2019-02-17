@@ -18,11 +18,13 @@ public class ArrayContainer implements Container{
 
     private int ptr;
 
-    BaseEquipment [] equipArray;
+    //can I make it protected? or it's must be private?
+    protected BaseEquipment [] equipArray;
 
     {
         ptr = 0;
     }
+
 
 
     public ArrayContainer(){
@@ -33,14 +35,25 @@ public class ArrayContainer implements Container{
         equipArray= new BaseEquipment[size];
     }
 
-    //Do we really need it?
-    public ArrayContainer(BaseEquipment[] equipArray) {
+    public ArrayContainer(BaseEquipment... equipArray) {
         this.equipArray = new BaseEquipment[equipArray.length];
 
         for(int localPtr = 0; localPtr < this.equipArray.length; localPtr++ ){
             this.equipArray[localPtr] = equipArray[localPtr];
         }
 
+        ptr = equipArray.length;
+
+    }
+
+
+
+    protected int getPtr() {
+        return ptr;
+    }
+
+    protected void setPtr(int ptr) {
+        this.ptr = ptr;
     }
 
 
@@ -51,6 +64,7 @@ public class ArrayContainer implements Container{
             return false;
         }
         equipArray[ptr] = equip;
+        ptr++;
         return true;
     }
 
@@ -61,6 +75,11 @@ public class ArrayContainer implements Container{
         }
 
         return equipArray[index];
+    }
+
+    @Override
+    public int getSize() {
+        return equipArray.length;
     }
 
     @Override

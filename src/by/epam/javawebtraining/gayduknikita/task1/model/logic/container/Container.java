@@ -19,6 +19,8 @@ public interface Container {
 
     public BaseEquipment get(int index);
 
+    public int getSize();
+
     public boolean remove(int index);
 
     public void clearAll();
