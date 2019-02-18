@@ -18,4 +18,6 @@ public interface Creator {
 
     public BaseEquipment factoryMethod();
 
+    public BaseEquipment factoryMethodRandomFill();
+
 }

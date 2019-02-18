@@ -74,6 +74,9 @@ public class BaseEquipment {
 
     @Override
     public String toString() {
+        if(this == null){
+            return "Empty";
+        }
         return "Class name: " + getClass().getName()+ "\n" + "Price: " + price + ", wear degree: " + equipmentState;
     }
 

@@ -8,6 +8,9 @@ package by.epam.javawebtraining.gayduknikita.task1.util.Creator;
 
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
 
+import static by.epam.javawebtraining.gayduknikita.task1.util.Randomizer.EquipmentRandomizer.*;
+
+
 /**
  * The BaseEquipmentCreator class is a creator
  * class for BaseEquipment. Implements Creator
@@ -21,4 +24,9 @@ public class BaseEquipmentCreator implements Creator {
         return new BaseEquipment();
     }
 
+    @Override
+    public BaseEquipment factoryMethodRandomFill() {
+
+        return new BaseEquipment(getRandInt(1,1000), getRandWearDegree());
+    }
 }

@@ -15,15 +15,17 @@ public class Main {
         BaseEquipmentCreator baseCreator1 = new BaseEquipmentCreator();
         ArmorCreator armorCreator1 = new ArmorCreator();
 
-        BaseEquipment equip1 = baseCreator1.factoryMethod();
-        BaseEquipment equip2 = armorCreator1.factoryMethod();
-        BaseEquipment equip3 = baseCreator1.factoryMethod();
+        BaseEquipment equip1 = baseCreator1.factoryMethodRandomFill();
+        BaseEquipment equip2 = armorCreator1.factoryMethodRandomFill();
+        BaseEquipment equip3 = baseCreator1.factoryMethodRandomFill();
 
-        ArrayContainer container1 = new ArrayContainer();
+        ArrayContainer container1 = new ArrayContainer(equip1,equip2,equip3);
 
-        EquipmentSorter sorter1 = new EquipmentSorter();
+        container1.get(0).toString();
+        container1.get(1).toString();
+        container1.get(2).toString();
+        container1.get(3).toString();
 
-        sorter1.sortByType(container1, BaseEquipment.class, Breastplate.class);
 
     }
 
