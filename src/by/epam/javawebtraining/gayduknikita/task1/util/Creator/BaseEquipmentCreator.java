@@ -8,7 +8,7 @@ package by.epam.javawebtraining.gayduknikita.task1.util.Creator;
 
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
 
-import static by.epam.javawebtraining.gayduknikita.task1.util.Randomizer.EquipmentRandomizer.*;
+import static by.epam.javawebtraining.gayduknikita.task1.util.Creator.EquipParamRandomizer.*;
 
 
 /**

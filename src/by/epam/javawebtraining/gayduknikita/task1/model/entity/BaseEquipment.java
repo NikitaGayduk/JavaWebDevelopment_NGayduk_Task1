@@ -29,6 +29,7 @@ public class BaseEquipment {
         equipmentState = state;
     }
 
+    // TODO: 18.02.2019 тут по хорошему тоже надо бы какую нибудь проверку 
     public BaseEquipment(BaseEquipment equip){
         price = equip.price;
         equipmentState = equip.equipmentState;
@@ -77,11 +78,14 @@ public class BaseEquipment {
         if(this == null){
             return "Empty";
         }
-        return "Class name: " + getClass().getName()+ "\n" + "Price: " + price + ", wear degree: " + equipmentState;
+        return "Class name: " + getClass().getSimpleName() + "\n" + "Price: " + price + ", wear degree: " + equipmentState;
     }
 
     @Override
     public int hashCode() {
+        if(this == null){
+            return 0;
+        }
         int result = 17;
         result = 31 * result + price;
         result = 31 * result + equipmentState.hashCode();

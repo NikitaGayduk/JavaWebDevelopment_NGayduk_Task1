@@ -1,8 +1,8 @@
-package by.epam.javawebtraining.gayduknikita.task1.util.Randomizer;
+package by.epam.javawebtraining.gayduknikita.task1.util.Creator;
 
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.WearDegree;
 
-public class EquipmentRandomizer {
+class EquipParamRandomizer {
 
     public static int getRandInt(int begin, int end){
         return (int) (( Math.random() * (end - begin) ) + begin);

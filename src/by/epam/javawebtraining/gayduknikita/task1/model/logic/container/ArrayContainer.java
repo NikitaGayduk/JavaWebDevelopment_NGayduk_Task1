@@ -63,15 +63,27 @@ public class ArrayContainer implements Container{
         if(ptr >= equipArray.length){
             return false;
         }
+
         equipArray[ptr] = equip;
         ptr++;
         return true;
     }
 
     @Override
-    public BaseEquipment get(int index) {
-        if(index<0 || index >= equipArray.length || equipArray[index] == null ){
-            // TODO: 17.02.2019 Надо бы тут что нибудь выбрасывать
+    public boolean addOn(int index, BaseEquipment equip) {
+        if(index<0 || index >= equipArray.length){
+            return false;
+        }
+
+        equipArray[index] = equip;
+        return true;
+    }
+
+    @Override
+    // TODO: 18.02.2019 Can return null, how can I mark it?
+    public BaseEquipment get(int index) throws IndexOutOfBoundsException {
+        if(equipArray[index] == null){
+            return null;
         }
 
         return equipArray[index];

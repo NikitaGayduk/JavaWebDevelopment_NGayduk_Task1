@@ -1,4 +1,4 @@
-/*Breastplate
+/*TorsoArmor
  * 1.0
  * 17/02/2019
  *GaydukNikita
@@ -7,33 +7,33 @@
 package by.epam.javawebtraining.gayduknikita.task1.model.entity;
 
 /**
- * The Breastplate class is a part of knight
+ * The TorsoArmor class is a part of knight
  * armor. Extends ArmorEquipment
  */
 
-public class Breastplate extends ArmorEquipment {
+public class TorsoArmor extends ArmorEquipment {
 
     private double waistGirth;
     private double chestGirth;
 
 
 
-    public Breastplate(){
+    public TorsoArmor(){
         super();
         waistGirth = 99;
         chestGirth = 99;
     }
 
-    public Breastplate(int cost, WearDegree state, int armor, double waistGirth, double chestGirth) {
+    public TorsoArmor(int cost, WearDegree state, int armor, double waistGirth, double chestGirth) {
         super(cost,state,armor);
         this.waistGirth = waistGirth;
         this.chestGirth = chestGirth;
     }
 
-    public Breastplate(Breastplate breastplate) {
-        super(breastplate);
-        this.waistGirth = breastplate.waistGirth;
-        this.chestGirth = breastplate.chestGirth;
+    public TorsoArmor(TorsoArmor torsoArmor) {
+        super(torsoArmor);
+        this.waistGirth = torsoArmor.waistGirth;
+        this.chestGirth = torsoArmor.chestGirth;
     }
 
     public double getWaistGirth() {
@@ -54,9 +54,9 @@ public class Breastplate extends ArmorEquipment {
 
     @Override
     public boolean equals(Object obj) {
-        Breastplate breastplate = (Breastplate) obj;
-        if ((super.equals(obj)) && (this.waistGirth == breastplate.waistGirth)
-                && (this.chestGirth == breastplate.chestGirth) ){
+        TorsoArmor torsoArmor = (TorsoArmor) obj;
+        if ((super.equals(obj)) && (this.waistGirth == torsoArmor.waistGirth)
+                && (this.chestGirth == torsoArmor.chestGirth) ){
             return true;
         } else {
             return false;

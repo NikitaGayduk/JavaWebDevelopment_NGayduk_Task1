@@ -53,7 +53,6 @@ public class DynamicArrayContainer extends ArrayContainer {
         }
 
         this.equipArray = equipArrayTmp;
-        System.out.println("Resized");
 
     }
 

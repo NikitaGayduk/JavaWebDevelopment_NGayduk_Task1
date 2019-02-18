@@ -17,6 +17,8 @@ public interface Container {
 
     public boolean add(BaseEquipment equip);
 
+    public boolean addOn(int index, BaseEquipment equip);
+
     public BaseEquipment get(int index);
 
     public int getSize();
