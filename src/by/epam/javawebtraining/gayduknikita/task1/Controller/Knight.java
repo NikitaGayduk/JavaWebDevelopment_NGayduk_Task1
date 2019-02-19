@@ -17,6 +17,5 @@ public class Knight {
         Container container = new DynamicArrayContainer();
         Sorter sorte = new EquipmentSorter();
         BaseEquipment base = baseEquipmentCreator.factoryMethodRandomFill();
-        System.out.println(base);
     }
 }

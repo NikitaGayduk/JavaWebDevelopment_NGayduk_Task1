@@ -6,6 +6,8 @@
 
 package by.epam.javawebtraining.gayduknikita.task1.model.entity;
 
+import java.util.Objects;
+
 /**
  * The TorsoArmor class is a part of knight
  * armor. Extends ArmorEquipment
@@ -54,10 +56,18 @@ public class TorsoArmor extends ArmorEquipment {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        TorsoArmor torsoArmor = (TorsoArmor) obj;
-        return (super.equals(obj)) && (this.waistGirth == torsoArmor.waistGirth)
-                && (this.chestGirth == torsoArmor.chestGirth);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        TorsoArmor that = (TorsoArmor) o;
+        return Double.compare(that.waistGirth, waistGirth) == 0 &&
+                Double.compare(that.chestGirth, chestGirth) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), waistGirth, chestGirth);
     }
 
     @Override
@@ -66,10 +76,5 @@ public class TorsoArmor extends ArmorEquipment {
                 + ", chest girth: " + chestGirth;
     }
 
-    @Override
-    public int hashCode() {
-        int result = super.hashCode();
-        result = 31 * result + (int) waistGirth;
-        return 31 * result + (int) chestGirth;
-    }
+
 }

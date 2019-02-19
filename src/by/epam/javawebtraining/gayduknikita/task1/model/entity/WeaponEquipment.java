@@ -51,7 +51,7 @@ public class WeaponEquipment extends BaseEquipment {
 
     @Override
     public String toString() {
-        return super.toString() + ", armor: " + damageValue;
+        return super.toString() + ", damage: " + damageValue;
     }
 
     @Override
