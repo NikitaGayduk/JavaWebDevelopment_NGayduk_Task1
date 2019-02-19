@@ -7,46 +7,50 @@
 package by.epam.javawebtraining.gayduknikita.task1.model.logic.sorter;
 
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
-import by.epam.javawebtraining.gayduknikita.task1.model.logic.container.ArrayContainer;
 import by.epam.javawebtraining.gayduknikita.task1.model.logic.container.Container;
+
 import java.util.ArrayDeque;
 
-public class EquipmentSorter implements Sorter{
+public class EquipmentSorter implements Sorter {
 
     @Override
-    public void sortByType(Container container, Class<? extends BaseEquipment> ... typeOrderArray) {
+    public void sortByType(Container container, Class<? extends BaseEquipment>... typeOrderArray) {
 
 
         //Makes typeOrderArray contain only unique values.
         ArrayDeque<Class> typeDeque = new ArrayDeque<>();
 
-        for(Class type : typeOrderArray ){
-            if(type == null){
+        for (Class type : typeOrderArray) {
+            if (type == null) {
                 continue;
             }
-            if(!typeDeque.contains(type)){
+            if (!typeDeque.contains(type)) {
                 typeDeque.add(type);
             }
         }
 
-        //Sort array by the types deque
+        /*This code sort array by the types deque.
+         * Sort from begin by first type, than
+         * remember where it stop and begin sort
+         * by the second type from the stop point
+         */
         int sortEnd = 0;
 
-        for(Class type : typeDeque){
+        for (Class type : typeDeque) {
 
-            for(int firstPtr = sortEnd; firstPtr < container.getSize() - 1; firstPtr++){
+            for (int firstPtr = sortEnd; firstPtr < container.getSize() - 1; firstPtr++) {
 
-                if(container.get(firstPtr) == null || container.get(firstPtr).getClass() != type){
+                if (container.get(firstPtr) == null || container.get(firstPtr).getClass() != type) {
 
-                    for(int secondPtr = firstPtr + 1; secondPtr < container.getSize(); secondPtr++){
+                    for (int secondPtr = firstPtr + 1; secondPtr < container.getSize(); secondPtr++) {
 
-                        if(container.get(secondPtr) == null){
+                        if (container.get(secondPtr) == null) {
                             continue;
                         }
-                        if(container.get(secondPtr).getClass() == type){
+                        if (container.get(secondPtr).getClass() == type) {
                             BaseEquipment tmp = container.get(secondPtr);
-                            container.addOn(secondPtr,container.get(firstPtr));
-                            container.addOn(firstPtr,tmp);
+                            container.addOn(secondPtr, container.get(firstPtr));
+                            container.addOn(firstPtr, tmp);
                             sortEnd++;
                             break;
                         }

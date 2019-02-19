@@ -16,8 +16,8 @@ import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
 
 public interface Creator {
 
-    public BaseEquipment factoryMethod();
+    BaseEquipment factoryMethod();
 
-    public BaseEquipment factoryMethodRandomFill();
+    BaseEquipment factoryMethodRandomFill();
 
 }

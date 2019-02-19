@@ -15,17 +15,18 @@ public class TorsoArmor extends ArmorEquipment {
 
     private double waistGirth;
     private double chestGirth;
+    private final static int DEFAULT_WAIST_GIRTH = 80;
+    private final static int DEFAULT_CHEST_GIRTH = 110;
 
 
-
-    public TorsoArmor(){
+    public TorsoArmor() {
         super();
-        waistGirth = 99;
-        chestGirth = 99;
+        waistGirth = DEFAULT_WAIST_GIRTH;
+        chestGirth = DEFAULT_CHEST_GIRTH;
     }
 
     public TorsoArmor(int cost, WearDegree state, int armor, double waistGirth, double chestGirth) {
-        super(cost,state,armor);
+        super(cost, state, armor);
         this.waistGirth = waistGirth;
         this.chestGirth = chestGirth;
     }
@@ -55,12 +56,8 @@ public class TorsoArmor extends ArmorEquipment {
     @Override
     public boolean equals(Object obj) {
         TorsoArmor torsoArmor = (TorsoArmor) obj;
-        if ((super.equals(obj)) && (this.waistGirth == torsoArmor.waistGirth)
-                && (this.chestGirth == torsoArmor.chestGirth) ){
-            return true;
-        } else {
-            return false;
-        }
+        return (super.equals(obj)) && (this.waistGirth == torsoArmor.waistGirth)
+                && (this.chestGirth == torsoArmor.chestGirth);
     }
 
     @Override
@@ -73,7 +70,6 @@ public class TorsoArmor extends ArmorEquipment {
     public int hashCode() {
         int result = super.hashCode();
         result = 31 * result + (int) waistGirth;
-        result = 31 * result + (int) chestGirth;
-        return result;
+        return 31 * result + (int) chestGirth;
     }
 }

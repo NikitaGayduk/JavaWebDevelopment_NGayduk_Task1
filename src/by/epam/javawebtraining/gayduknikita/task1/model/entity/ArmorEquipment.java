@@ -10,34 +10,32 @@ package by.epam.javawebtraining.gayduknikita.task1.model.entity;
  * The ArmorEquipment class is a basic
  * class for all knight equipment that is
  * kind of armor. Extends BaseEquipment
- *
  */
 
 public class ArmorEquipment extends BaseEquipment {
 
     private int armorValue;
+    private final static int DEFAULT_ARMOR = 300;
 
 
-
-    public ArmorEquipment(){
+    public ArmorEquipment() {
         super();
-        armorValue = 999;
+        armorValue = DEFAULT_ARMOR;
     }
 
-    public ArmorEquipment(int cost, WearDegree state, int armor){
-        super(cost,state);
-        armorValue = armor;
+    public ArmorEquipment(int cost, WearDegree state, int armorValue) {
+        super(cost, state);
+        this.armorValue = armorValue;
     }
 
-    public ArmorEquipment(ArmorEquipment equip){
+    public ArmorEquipment(ArmorEquipment equip) {
         super(equip);
         armorValue = equip.armorValue;
     }
 
 
-
-    public void setArmorValue(int armor) {
-        armorValue = armorValue;
+    public void setArmorValue(int armorValue) {
+        this.armorValue = armorValue;
     }
 
     public int getArmorValue() {
@@ -45,15 +43,10 @@ public class ArmorEquipment extends BaseEquipment {
     }
 
 
-
     @Override
     public boolean equals(Object obj) {
         ArmorEquipment equip = (ArmorEquipment) obj;
-        if ((super.equals(obj)) && (this.armorValue == equip.armorValue)){
-            return true;
-        } else {
-            return false;
-        }
+        return (super.equals(obj)) && (this.armorValue == equip.armorValue);
     }
 
     @Override

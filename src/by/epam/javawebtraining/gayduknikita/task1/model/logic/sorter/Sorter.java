@@ -11,7 +11,7 @@ import by.epam.javawebtraining.gayduknikita.task1.model.logic.container.Containe
 
 public interface Sorter {
 
-    public void sortByType(Container container, Class<? extends BaseEquipment>... equipClassArray);
+    void sortByType(Container container, Class<? extends BaseEquipment>... equipClassArray);
     //public void sort(Container container, SortOrder order, //Поле);
 
 }

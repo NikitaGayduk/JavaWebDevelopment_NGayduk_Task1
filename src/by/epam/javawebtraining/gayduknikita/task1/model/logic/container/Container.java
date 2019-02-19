@@ -15,16 +15,18 @@ import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
 
 public interface Container {
 
-    public boolean add(BaseEquipment equip);
+    boolean add(BaseEquipment equip);
 
-    public boolean addOn(int index, BaseEquipment equip);
+    boolean addOn(int index, BaseEquipment equip);
 
-    public BaseEquipment get(int index);
+    BaseEquipment get(int index);
 
-    public int getSize();
+    BaseEquipment[] getAll();
 
-    public boolean remove(int index);
+    int getSize();
 
-    public void clearAll();
+    boolean remove(int index);
+
+    void clearAll();
 
 }

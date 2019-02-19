@@ -17,30 +17,30 @@ import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
 public class DynamicArrayContainer extends ArrayContainer {
 
 
-    public DynamicArrayContainer(){
+    public DynamicArrayContainer() {
         super();
     }
 
-    public DynamicArrayContainer(int size){
+    public DynamicArrayContainer(int size) {
         super(size);
     }
 
-    public DynamicArrayContainer(BaseEquipment... equipArray){
+    public DynamicArrayContainer(BaseEquipment... equipArray) {
         super(equipArray);
     }
 
     @Override
     public boolean add(BaseEquipment equip) {
-        if(this.getPtr() >= equipArray.length){
+        if (this.getPtr() >= equipArray.length) {
             resize();
         }
         return super.add(equip);
     }
 
-    private void resize(){
+    private void resize() {
         int newSize;
 
-        if(this.equipArray.length < 40){
+        if (this.equipArray.length < 40) {
             newSize = 50;
         } else {
             newSize = (int) (this.equipArray.length * 1.3);
@@ -48,7 +48,7 @@ public class DynamicArrayContainer extends ArrayContainer {
 
         BaseEquipment[] equipArrayTmp = new BaseEquipment[newSize];
 
-        for(int ptr = 0; ptr < this.equipArray.length; ptr++){
+        for (int ptr = 0; ptr < this.equipArray.length; ptr++) {
             equipArrayTmp[ptr] = this.get(ptr);
         }
 

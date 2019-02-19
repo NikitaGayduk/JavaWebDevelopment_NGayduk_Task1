@@ -9,48 +9,57 @@ package by.epam.javawebtraining.gayduknikita.task1.model.entity;
 /**
  * The BaseEquipment class is a basic
  * class for all knight equipment
- *
  */
 
 public class BaseEquipment {
 
     private int price;
     private WearDegree equipmentState;
+    private final static int DEFAULT_COST = 200;
+    private final static WearDegree DEFAULT_STATE = WearDegree.UNBROKEN;
 
 
+    public enum WearDegree {
 
-    public BaseEquipment(){
-        price = 9999;
-        equipmentState = WearDegree.UNBROKEN;
+        UNBROKEN,
+        SLIGHTLY_WORN,
+        THREADBARE,
+        BROKEN
+
     }
 
-    public BaseEquipment(int cost, WearDegree state){
-        price = cost;
-        equipmentState = state;
+
+    public BaseEquipment() {
+        price = DEFAULT_COST;
+        equipmentState = DEFAULT_STATE;
     }
 
-    // TODO: 18.02.2019 тут по хорошему тоже надо бы какую нибудь проверку 
-    public BaseEquipment(BaseEquipment equip){
+    public BaseEquipment(int price, WearDegree equipmentState) {
+        this.price = price;
+        this.equipmentState = equipmentState;
+    }
+
+    // TODO: 18.02.2019 как застраховаться от передачи null в конструктор?
+    public BaseEquipment(BaseEquipment equip) {
         price = equip.price;
         equipmentState = equip.equipmentState;
     }
 
 
-
-    public void setPrice(int cost){
-        price = cost;
+    public void setPrice(int price) {
+        this.price = price;
     }
 
-    public int getPrice(){
+    public int getPrice() {
         return price;
     }
 
 
-    public void setEquipmentState(WearDegree state){
-        equipmentState = state;
+    public void setEquipmentState(WearDegree equipmentState) {
+        this.equipmentState = equipmentState;
     }
 
-    public WearDegree getEquipmentState(){
+    public WearDegree getEquipmentState() {
         return equipmentState;
     }
 
@@ -59,37 +68,27 @@ public class BaseEquipment {
     public boolean equals(Object obj) {
         BaseEquipment equip = (BaseEquipment) obj;
 
-        if(super.equals(obj)){
+        if (super.equals(obj)) {
             return true;
         }
-        if((obj == null) || (this.getClass() != obj.getClass())){
+        if ((obj == null) || (this.getClass() != obj.getClass())) {
             return false;
         }
 
-        if ((this.price == equip.getPrice()) && (this.equipmentState == equip.equipmentState)){
-            return true;
-        } else {
-            return false;
-        }
+        return (this.price == equip.getPrice()) && (this.equipmentState == equip.equipmentState);
     }
 
     @Override
     public String toString() {
-        if(this == null){
-            return "Empty";
-        }
-        return "Class name: " + getClass().getSimpleName() + "\n" + "Price: " + price + ", wear degree: " + equipmentState;
+        return "Class name: " + getClass().getSimpleName() + "\n" + "Price: " + price
+                + ", wear degree: " + equipmentState;
     }
 
     @Override
     public int hashCode() {
-        if(this == null){
-            return 0;
-        }
         int result = 17;
         result = 31 * result + price;
-        result = 31 * result + equipmentState.hashCode();
-        return result;
+        return 31 * result + equipmentState.hashCode();
     }
 }
 
