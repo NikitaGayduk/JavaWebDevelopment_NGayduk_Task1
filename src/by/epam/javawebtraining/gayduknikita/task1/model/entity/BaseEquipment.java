@@ -11,7 +11,7 @@ package by.epam.javawebtraining.gayduknikita.task1.model.entity;
  * class for all knight equipment
  */
 
-public class BaseEquipment {
+public class BaseEquipment implements Comparable<BaseEquipment> {
 
     private int price;
     private WearDegree equipmentState;
@@ -89,6 +89,14 @@ public class BaseEquipment {
         int result = 17;
         result = 31 * result + price;
         return 31 * result + equipmentState.hashCode();
+    }
+
+    @Override
+    public int compareTo(BaseEquipment equip) {
+        if (equip == null) {
+            return 1;
+        }
+        return Integer.compare(this.price, equip.price);
     }
 }
 
