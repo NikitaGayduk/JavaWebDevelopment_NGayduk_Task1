@@ -79,12 +79,6 @@ public class BaseEquipment implements Comparable<BaseEquipment> {
     }
 
     @Override
-    public String toString() {
-        return "Class name: " + getClass().getSimpleName() + "\n" + "Price: " + price
-                + ", wear degree: " + equipmentState;
-    }
-
-    @Override
     public int hashCode() {
         int result = 17;
         result = 31 * result + price;
@@ -93,10 +87,22 @@ public class BaseEquipment implements Comparable<BaseEquipment> {
 
     @Override
     public int compareTo(BaseEquipment equip) {
+        int result;
         if (equip == null) {
-            return 1;
+            result = 1;
+        } else {
+            result = Integer.compare(this.price, equip.price);
+            if (result == 0) {
+                result = this.equipmentState.compareTo(equip.getEquipmentState());
+            }
         }
-        return Integer.compare(this.price, equip.price);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Class name: " + getClass().getSimpleName() + "\n" + "Price: " + price
+                + ", wear degree: " + equipmentState;
     }
 }
 

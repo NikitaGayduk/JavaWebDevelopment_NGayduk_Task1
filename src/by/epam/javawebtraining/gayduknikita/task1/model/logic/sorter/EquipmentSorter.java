@@ -7,16 +7,15 @@
 package by.epam.javawebtraining.gayduknikita.task1.model.logic.sorter;
 
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
-import by.epam.javawebtraining.gayduknikita.task1.model.logic.container.Container;
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.collection.Collection;
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.comporator.WearDegreeComporator;
 
 import java.util.ArrayDeque;
 
 public class EquipmentSorter implements Sorter {
 
     @Override
-    public void sortByType(Container container, Class<? extends BaseEquipment>... typeOrderArray) {
-
-
+    public void sortByType(Collection collection, Class<? extends BaseEquipment>... typeOrderArray) {
         //Makes typeOrderArray contain only unique values.
         ArrayDeque<Class> typeDeque = new ArrayDeque<>();
 
@@ -38,23 +37,22 @@ public class EquipmentSorter implements Sorter {
 
         for (Class type : typeDeque) {
 
-            for (int firstPtr = sortEnd; firstPtr < container.getSize() - 1; firstPtr++) {
+            for (int firstPtr = sortEnd; firstPtr < collection.getSize() - 1; firstPtr++) {
 
-                if (container.get(firstPtr) == null || container.get(firstPtr).getClass() != type) {
+                if (collection.get(firstPtr) == null || collection.get(firstPtr).getClass() != type) {
 
-                    for (int secondPtr = firstPtr + 1; secondPtr < container.getSize(); secondPtr++) {
+                    for (int secondPtr = firstPtr + 1; secondPtr < collection.getSize(); secondPtr++) {
 
-                        if (container.get(secondPtr) == null) {
+                        if (collection.get(secondPtr) == null) {
                             continue;
                         }
-                        if (container.get(secondPtr).getClass() == type) {
-                            BaseEquipment tmp = container.get(secondPtr);
-                            container.addOn(secondPtr, container.get(firstPtr));
-                            container.addOn(firstPtr, tmp);
+                        if (collection.get(secondPtr).getClass() == type) {
+                            BaseEquipment tmp = collection.get(secondPtr);
+                            collection.addOn(secondPtr, collection.get(firstPtr));
+                            collection.addOn(firstPtr, tmp);
                             sortEnd++;
                             break;
                         }
-
                     }
                 } else {
                     sortEnd++;
@@ -62,6 +60,14 @@ public class EquipmentSorter implements Sorter {
             }
             sortEnd++;
         }
+    }
 
+    @Override
+    public void sortByWearDegree(Collection collection) {
+        WearDegreeComporator comporator = new WearDegreeComporator();
+        sortByType(collection, BaseEquipment.class);
+        for (int ptr = 0; ptr < collection.getSize(); ptr++) {
+
+        }
     }
 }

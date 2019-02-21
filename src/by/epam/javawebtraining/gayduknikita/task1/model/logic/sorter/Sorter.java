@@ -7,9 +7,11 @@
 package by.epam.javawebtraining.gayduknikita.task1.model.logic.sorter;
 
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
-import by.epam.javawebtraining.gayduknikita.task1.model.logic.container.Container;
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.collection.Collection;
 
 public interface Sorter {
 
-    void sortByType(Container container, Class<? extends BaseEquipment>... equipClassArray);
+    void sortByType(Collection collection, Class<? extends BaseEquipment>... equipClassArray);
+
+    void sortByWearDegree(Collection collection);
 }

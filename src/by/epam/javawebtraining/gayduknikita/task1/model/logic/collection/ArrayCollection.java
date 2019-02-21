@@ -1,56 +1,47 @@
-/*ArrayContainer
+/*ArrayCollection
  * 1.0
  * 17/02/2019
  *GaydukNikita
  */
 
-package by.epam.javawebtraining.gayduknikita.task1.model.logic.container;
+package by.epam.javawebtraining.gayduknikita.task1.model.logic.collection;
 
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
 
 import java.util.Arrays;
 
 /**
- * The ArrayContainer class is a bicycle
+ * The ArrayCollection class is a bicycle
  * class that shows my knowledge about static arrays.
- * Implements Container
+ * Implements Collection
  */
 
-public class ArrayContainer implements Container {
+public class ArrayCollection implements Collection {
 
     private int ptr;
 
-    //can I make it protected? or it's must be private?
-    protected BaseEquipment[] equipArray;
+    //can I make it package-private? or it's must be private?
+    BaseEquipment[] equipArray;
 
     {
         ptr = 0;
     }
 
 
-    public ArrayContainer() {
+    public ArrayCollection() {
         equipArray = new BaseEquipment[10];
     }
 
-    public ArrayContainer(int size) {
+    public ArrayCollection(int size) {
         equipArray = new BaseEquipment[size];
     }
 
-    public ArrayContainer(BaseEquipment... equipArray) {
-        this.equipArray = new BaseEquipment[equipArray.length];
 
-        this.equipArray = Arrays.copyOf(equipArray, equipArray.length);
-
-        ptr = equipArray.length;
-
-    }
-
-
-    protected int getPtr() {
+    int getPtr() {
         return ptr;
     }
 
-    protected void setPtr(int ptr) {
+    void setPtr(int ptr) {
         this.ptr = ptr;
     }
 
@@ -78,11 +69,10 @@ public class ArrayContainer implements Container {
 
     @Override
     // TODO: 18.02.2019 Can return null, how can I mark it?
-    public BaseEquipment get(int index) throws IndexOutOfBoundsException {
+    public BaseEquipment get(int index) {
         if (equipArray[index] == null) {
             return null;
         }
-
         return equipArray[index];
     }
 
@@ -113,12 +103,5 @@ public class ArrayContainer implements Container {
         equipArray[ptr - 1] = null;
         return true;
 
-    }
-
-    @Override
-    public void clearAll() {
-        for (int localPtr = 0; localPtr < this.equipArray.length; localPtr++) {
-            equipArray[localPtr] = null;
-        }
     }
 }

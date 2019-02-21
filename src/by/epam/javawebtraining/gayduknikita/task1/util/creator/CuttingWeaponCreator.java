@@ -4,17 +4,16 @@
  *GaydukNikita
  */
 
-package by.epam.javawebtraining.gayduknikita.task1.util.Creator;
+package by.epam.javawebtraining.gayduknikita.task1.util.creator;
 
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.CuttingWeapon;
-import by.epam.javawebtraining.gayduknikita.task1.model.entity.TorsoArmor;
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
 
-import static by.epam.javawebtraining.gayduknikita.task1.util.Creator.EquipParamRandomize.*;
+import static by.epam.javawebtraining.gayduknikita.task1.util.creator.EquipParamRandomize.*;
 
 /**
  * The TorsoArmorCreator class is a creator
- * class for TorsoArmor. Implements Creator
+ * class for TorsoArmor. Implements creator
  * interface
  */
 

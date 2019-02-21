@@ -1,19 +1,19 @@
-/*Container
+/*Collection
  * 1.0
  * 17/02/2019
  *GaydukNikita
  */
 
-package by.epam.javawebtraining.gayduknikita.task1.model.logic.container;
+package by.epam.javawebtraining.gayduknikita.task1.model.logic.collection;
 
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
 
 /**
- * The Container class is a basic
- * interface for all container classes
+ * The Collection class is a basic
+ * interface for all collection classes
  */
 
-public interface Container {
+public interface Collection {
 
     boolean add(BaseEquipment equip);
 
@@ -26,7 +26,5 @@ public interface Container {
     int getSize();
 
     boolean remove(int index);
-
-    void clearAll();
 
 }

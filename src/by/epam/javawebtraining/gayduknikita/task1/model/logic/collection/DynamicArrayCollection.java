@@ -1,32 +1,28 @@
-/*DynamicArrayContainer
+/*DynamicArrayCollection
  * 1.0
  * 17/02/2019
  *GaydukNikita
  */
 
-package by.epam.javawebtraining.gayduknikita.task1.model.logic.container;
+package by.epam.javawebtraining.gayduknikita.task1.model.logic.collection;
 
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
 
 /**
- * The DynamicArrayContainer class is a bicycle
+ * The DynamicArrayCollection class is a bicycle
  * class that shows my knowledge about dynamic arrays.
- * Extends ArrayContainer
+ * Extends ArrayCollection
  */
 
-public class DynamicArrayContainer extends ArrayContainer {
+public class DynamicArrayCollection extends ArrayCollection {
 
 
-    public DynamicArrayContainer() {
+    public DynamicArrayCollection() {
         super();
     }
 
-    public DynamicArrayContainer(int size) {
+    public DynamicArrayCollection(int size) {
         super(size);
-    }
-
-    public DynamicArrayContainer(BaseEquipment... equipArray) {
-        super(equipArray);
     }
 
     @Override
