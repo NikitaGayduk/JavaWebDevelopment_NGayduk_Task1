@@ -80,7 +80,7 @@ public class ArrayCollection implements Collection {
     public BaseEquipment[] getAll() {
         BaseEquipment[] tmp = new BaseEquipment[getSize()];
         for (int localPtr = 0; localPtr < tmp.length; localPtr++) {
-            tmp[ptr] = this.get(ptr);
+            tmp[localPtr] = this.get(localPtr);
         }
         return tmp;
     }

@@ -9,7 +9,7 @@ public class ConsolePrinter implements Printer {
             if(equip == null){
                 System.out.println("Empty \n");
             } else {
-                System.out.println(equip.toString());
+                System.out.println(equip.toString() + "\n");
             }
         }
     }

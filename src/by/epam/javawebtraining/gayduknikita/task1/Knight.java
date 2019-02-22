@@ -2,6 +2,7 @@ package by.epam.javawebtraining.gayduknikita.task1;
 
 
 import by.epam.javawebtraining.gayduknikita.task1.Controller.BaseBag;
+import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
 import by.epam.javawebtraining.gayduknikita.task1.util.creator.ArmorCreator;
 import by.epam.javawebtraining.gayduknikita.task1.util.creator.BaseEquipmentCreator;
 import by.epam.javawebtraining.gayduknikita.task1.util.creator.Creator;
@@ -16,13 +17,7 @@ public class Knight {
         Printer printer = new ConsolePrinter();
 
         BaseBag bag = new BaseBag(10);
-        System.out.println(bag.add(baseCreator.factoryMethodRandomFill()));
-        System.out.println(bag.get(1));
         bag.add(armorCreator.factoryMethodRandomFill());
-
-        for(int ptr = 0; ptr < bag.getAll().length; ptr++){
-            System.out.println(bag.get(ptr) + "\n");
-        }
 
         printer.printArray(bag.getAll());
 
