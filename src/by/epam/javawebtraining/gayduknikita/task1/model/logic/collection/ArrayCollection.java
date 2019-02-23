@@ -62,13 +62,12 @@ public class ArrayCollection implements Collection {
         if (index < 0 || index >= equipArray.length) {
             return false;
         }
-
         equipArray[index] = equip;
         return true;
     }
 
     @Override
-    // TODO: 18.02.2019 Can return null, how can I mark it?
+    // TODO: 18.02.2019 Can return null, in IDEA I can mark it like @Nullable and @NotNull, can I?
     public BaseEquipment get(int index) {
         if (equipArray[index] == null) {
             return null;
@@ -102,6 +101,5 @@ public class ArrayCollection implements Collection {
         equipArray[index] = equipArray[ptr - 1];
         equipArray[ptr - 1] = null;
         return true;
-
     }
 }

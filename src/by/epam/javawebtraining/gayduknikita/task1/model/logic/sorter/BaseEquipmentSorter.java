@@ -11,11 +11,11 @@ import by.epam.javawebtraining.gayduknikita.task1.model.logic.collection.Collect
 import by.epam.javawebtraining.gayduknikita.task1.model.logic.comporator.WearDegreeComporator;
 
 import java.util.ArrayDeque;
+import java.util.Comparator;
 
-public class EquipmentSorter implements Sorter {
+public class BaseEquipmentSorter {
 
-    @Override
-    public void sortByType(Collection collection, Class<? extends BaseEquipment>... typeOrderArray) {
+    public static void sortByType(Collection collection, Class<? extends BaseEquipment>... typeOrderArray) {
         //Makes typeOrderArray contain only unique values.
         ArrayDeque<Class> typeDeque = new ArrayDeque<>();
 
@@ -62,12 +62,23 @@ public class EquipmentSorter implements Sorter {
         }
     }
 
-    @Override
-    public void sortByWearDegree(Collection collection) {
-        WearDegreeComporator comporator = new WearDegreeComporator();
-        sortByType(collection, BaseEquipment.class);
-        for (int ptr = 0; ptr < collection.getSize(); ptr++) {
+    public static void sortByParameter(Collection collection, String parameter){
+        switch (parameter){
+            case "WearDegree" :
 
         }
     }
+/*
+    public static void sortByWearDegree(Collection collection, Comparator<? extends BaseEquipment> comparator ) {
+        WearDegreeComporator comporator = new WearDegreeComporator();
+        sortByType(collection, BaseEquipment.class);
+        for (int ptr = 0; ptr < collection.getSize() - 1; ptr++) {
+            int result = comparator.compare(collection.get(ptr),collection.get(ptr+1));
+            if(result < 0){
+
+            }
+        }
+    }
+*/
+
 }

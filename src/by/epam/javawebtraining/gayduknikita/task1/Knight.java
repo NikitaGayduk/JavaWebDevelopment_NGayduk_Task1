@@ -1,25 +1,26 @@
 package by.epam.javawebtraining.gayduknikita.task1;
 
 
-import by.epam.javawebtraining.gayduknikita.task1.Controller.BaseBag;
+import by.epam.javawebtraining.gayduknikita.task1.controller.BaseBag;
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
-import by.epam.javawebtraining.gayduknikita.task1.util.creator.ArmorCreator;
-import by.epam.javawebtraining.gayduknikita.task1.util.creator.BaseEquipmentCreator;
-import by.epam.javawebtraining.gayduknikita.task1.util.creator.Creator;
+import by.epam.javawebtraining.gayduknikita.task1.util.collectioncreator.ArrayCollectionCreator;
 import by.epam.javawebtraining.gayduknikita.task1.util.printer.ConsolePrinter;
 import by.epam.javawebtraining.gayduknikita.task1.util.printer.Printer;
 
 public class Knight {
 
     public static void main(String[] args) {
-        Creator baseCreator = new BaseEquipmentCreator();
-        Creator armorCreator = new ArmorCreator();
+        ArrayCollectionCreator collectionCreator = new ArrayCollectionCreator();
+        BaseBag bag = new BaseBag(collectionCreator.factoryMethodRandomFill(20));
         Printer printer = new ConsolePrinter();
 
-        BaseBag bag = new BaseBag(10);
-        bag.add(armorCreator.factoryMethodRandomFill());
 
         printer.printArray(bag.getAll());
+        System.out.println("\n\n\n");
+        printer.printArray(bag.searchByArmorType());
+        System.out.println("\n\n\n");
+        printer.printArray(bag.searchByArmorValue(100, 150));
+
 
     }
 }

@@ -6,6 +6,8 @@
 
 package by.epam.javawebtraining.gayduknikita.task1.model.entity;
 
+import java.util.Objects;
+
 /**
  * The ArmorEquipment class is a basic
  * class for all knight equipment that is
@@ -15,7 +17,7 @@ package by.epam.javawebtraining.gayduknikita.task1.model.entity;
 public class ArmorEquipment extends BaseEquipment {
 
     private int armorValue;
-    private final static int DEFAULT_ARMOR = 300;
+    private static int DEFAULT_ARMOR = 300;
 
 
     public ArmorEquipment() {
@@ -42,20 +44,22 @@ public class ArmorEquipment extends BaseEquipment {
         return armorValue;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        ArmorEquipment that = (ArmorEquipment) o;
+        return armorValue == that.armorValue;
+    }
 
     @Override
-    public boolean equals(Object obj) {
-        ArmorEquipment equip = (ArmorEquipment) obj;
-        return (super.equals(obj)) && (this.armorValue == equip.armorValue);
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), armorValue);
     }
 
     @Override
     public String toString() {
         return super.toString() + ", armor: " + armorValue;
-    }
-
-    @Override
-    public int hashCode() {
-        return 31 * super.hashCode() + armorValue;
     }
 }

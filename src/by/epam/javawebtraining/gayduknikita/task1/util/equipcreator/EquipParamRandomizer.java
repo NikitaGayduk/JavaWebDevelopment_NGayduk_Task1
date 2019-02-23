@@ -1,10 +1,10 @@
-package by.epam.javawebtraining.gayduknikita.task1.util.creator;
+package by.epam.javawebtraining.gayduknikita.task1.util.equipcreator;
 
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
 
 import java.util.Random;
 
-class EquipParamRandomize {
+class EquipParamRandomizer {
 
     private static Random random = new Random();
 

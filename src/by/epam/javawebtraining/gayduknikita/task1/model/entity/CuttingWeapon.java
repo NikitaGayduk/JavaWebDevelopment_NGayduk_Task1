@@ -17,7 +17,7 @@ import java.util.Objects;
 public class CuttingWeapon extends WeaponEquipment {
 
     private int cuttingDamage;
-    private final static int DEFAULT_CUTTING_DMG = 30;
+    private static int DEFAULT_CUTTING_DMG = 30;
 
     public CuttingWeapon() {
         this.cuttingDamage = DEFAULT_CUTTING_DMG;
@@ -43,9 +43,15 @@ public class CuttingWeapon extends WeaponEquipment {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        if (!super.equals(o)) {
+            return false;
+        }
         CuttingWeapon that = (CuttingWeapon) o;
         return cuttingDamage == that.cuttingDamage;
     }

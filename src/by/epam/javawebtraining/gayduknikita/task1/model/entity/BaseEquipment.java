@@ -15,8 +15,8 @@ public class BaseEquipment implements Comparable<BaseEquipment> {
 
     private int price;
     private WearDegree equipmentState;
-    private final static int DEFAULT_COST = 200;
-    private final static WearDegree DEFAULT_STATE = WearDegree.UNBROKEN;
+    private static int DEFAULT_COST = 200;
+    private static WearDegree DEFAULT_STATE = WearDegree.UNBROKEN;
 
 
     public enum WearDegree {
@@ -39,7 +39,6 @@ public class BaseEquipment implements Comparable<BaseEquipment> {
         this.equipmentState = equipmentState;
     }
 
-    // TODO: 18.02.2019 как застраховаться от передачи null в конструктор?
     public BaseEquipment(BaseEquipment equip) {
         price = equip.price;
         equipmentState = equip.equipmentState;
@@ -66,17 +65,20 @@ public class BaseEquipment implements Comparable<BaseEquipment> {
 
     @Override
     public boolean equals(Object obj) {
-        BaseEquipment equip = (BaseEquipment) obj;
 
-        if (super.equals(obj)) {
-            return true;
-        }
         if ((obj == null) || (this.getClass() != obj.getClass())) {
             return false;
         }
+        if (super.equals(obj)) {
+            return true;
+        }
+
+        BaseEquipment equip = (BaseEquipment) obj;
 
         return (this.price == equip.getPrice()) && (this.equipmentState == equip.equipmentState);
     }
+
+
 
     @Override
     public int hashCode() {

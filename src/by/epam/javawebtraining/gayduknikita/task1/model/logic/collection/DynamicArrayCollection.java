@@ -16,6 +16,9 @@ import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
 
 public class DynamicArrayCollection extends ArrayCollection {
 
+    private static int DEFAULT_SIZE = 40;
+    private static int DEFAULT_NEW_SIZE = 50;
+    private static double DEFAULT_RESIZE_FACTOR = 1.3;
 
     public DynamicArrayCollection() {
         super();
@@ -36,10 +39,10 @@ public class DynamicArrayCollection extends ArrayCollection {
     private void resize() {
         int newSize;
 
-        if (this.equipArray.length < 40) {
-            newSize = 50;
+        if (this.equipArray.length < DEFAULT_SIZE) {
+            newSize = DEFAULT_NEW_SIZE;
         } else {
-            newSize = (int) (this.equipArray.length * 1.3);
+            newSize = (int) (this.equipArray.length * DEFAULT_RESIZE_FACTOR);
         }
 
         BaseEquipment[] equipArrayTmp = new BaseEquipment[newSize];
@@ -51,5 +54,4 @@ public class DynamicArrayCollection extends ArrayCollection {
         this.equipArray = equipArrayTmp;
 
     }
-
 }

@@ -17,8 +17,8 @@ public class TorsoArmor extends ArmorEquipment {
 
     private double waistGirth;
     private double chestGirth;
-    private final static int DEFAULT_WAIST_GIRTH = 80;
-    private final static int DEFAULT_CHEST_GIRTH = 110;
+    private static int DEFAULT_WAIST_GIRTH = 80;
+    private static int DEFAULT_CHEST_GIRTH = 110;
 
 
     public TorsoArmor() {
@@ -39,6 +39,7 @@ public class TorsoArmor extends ArmorEquipment {
         this.chestGirth = torsoArmor.chestGirth;
     }
 
+
     public double getWaistGirth() {
         return waistGirth;
     }
@@ -57,9 +58,15 @@ public class TorsoArmor extends ArmorEquipment {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        if (!super.equals(o)) {
+            return false;
+        }
         TorsoArmor that = (TorsoArmor) o;
         return Double.compare(that.waistGirth, waistGirth) == 0 &&
                 Double.compare(that.chestGirth, chestGirth) == 0;
@@ -75,6 +82,4 @@ public class TorsoArmor extends ArmorEquipment {
         return super.toString() + ", waist girth: " + waistGirth
                 + ", chest girth: " + chestGirth;
     }
-
-
 }
