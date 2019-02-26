@@ -6,6 +6,7 @@
 
 package by.epam.javawebtraining.gayduknikita.task1.model.logic.sorter;
 
+import by.epam.javawebtraining.gayduknikita.task1.model.entity.ArmorEquipment;
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
 import by.epam.javawebtraining.gayduknikita.task1.model.logic.collection.Collection;
 import by.epam.javawebtraining.gayduknikita.task1.model.logic.comporator.WearDegreeComporator;
@@ -46,7 +47,7 @@ public class BaseEquipmentSorter {
                         if (collection.get(secondPtr) == null) {
                             continue;
                         }
-                        if (collection.get(secondPtr).getClass() == type) {
+                        if (collection.get(secondPtr).getClass() == type || type.isAssignableFrom(collection.get(secondPtr).getClass())) {
                             BaseEquipment tmp = collection.get(secondPtr);
                             collection.addOn(secondPtr, collection.get(firstPtr));
                             collection.addOn(firstPtr, tmp);
@@ -62,23 +63,17 @@ public class BaseEquipmentSorter {
         }
     }
 
-    public static void sortByParameter(Collection collection, String parameter){
-        switch (parameter){
-            case "WearDegree" :
-
-        }
-    }
-/*
-    public static void sortByWearDegree(Collection collection, Comparator<? extends BaseEquipment> comparator ) {
-        WearDegreeComporator comporator = new WearDegreeComporator();
-        sortByType(collection, BaseEquipment.class);
+    public static void sortByWearDegree(Collection collection, Comparator<ArmorEquipment> comparator) {
+        //sortByType(collection, BaseEquipment.class);
+        int result = comparator.compare(new ArmorEquipment(), new ArmorEquipment());
+        /*
         for (int ptr = 0; ptr < collection.getSize() - 1; ptr++) {
-            int result = comparator.compare(collection.get(ptr),collection.get(ptr+1));
+            //int result = comparator.compare(collection.get(ptr),collection.get(ptr+1));
+            int result = comparator.compare(new ArmorEquipment(), new ArmorEquipment());
             if(result < 0){
 
             }
-        }
+        }*/
     }
-*/
 
 }

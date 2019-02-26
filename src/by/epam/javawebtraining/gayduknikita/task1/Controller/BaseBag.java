@@ -47,9 +47,9 @@ public class BaseBag {
         BaseEquipmentSorter.sortByType(collection, ArmorEquipment.class);
     }
 
-/*    public void sortByWearDegree() {
+    public void sortByWearDegree() {
         BaseEquipmentSorter.sortByWearDegree(collection, new WearDegreeComporator());
-    }*/
+    }
 
     public BaseEquipment[] searchByWeaponType() {
         return BaseEquipmentSearcher.searchByType(collection, WeaponEquipment.class);
