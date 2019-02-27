@@ -6,53 +6,58 @@
 
 package by.epam.javawebtraining.gayduknikita.task1.model.logic.sorter;
 
-import by.epam.javawebtraining.gayduknikita.task1.model.entity.ArmorEquipment;
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
 import by.epam.javawebtraining.gayduknikita.task1.model.logic.collection.Collection;
-import by.epam.javawebtraining.gayduknikita.task1.model.logic.comporator.WearDegreeComporator;
-
-import java.util.ArrayDeque;
-import java.util.Comparator;
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.comporator.BaseParameterComparator;
 
 public class BaseEquipmentSorter {
 
     public static void sortByType(Collection collection, Class<? extends BaseEquipment> type) {
-        /*This code sort array by the types deque.
-         * Sort from begin by first type, than
-         * remember where it stop and begin sort
-         * by the second type from the stop point
-         */
-        for (int firstPtr = 0; firstPtr < collection.getSize() - 1; firstPtr++) {
+        if (collection.getSize() < 2) {
+            return;
+        }
+
+        int uncheckedPtr = 1;
+        for (int firstPtr = 0; firstPtr < collection.getSize() - 1 && uncheckedPtr < collection.getSize(); firstPtr++) {
 
             if (collection.get(firstPtr) == null || collection.get(firstPtr).getClass() != type) {
 
-                for (int secondPtr = firstPtr + 1; secondPtr < collection.getSize(); secondPtr++) {
-
-                    if (collection.get(secondPtr) == null) {
+                while (uncheckedPtr < collection.getSize()) {
+                    if (collection.get(uncheckedPtr) == null) {
                         continue;
                     }
-                    if (collection.get(secondPtr).getClass() == type || type.isAssignableFrom(collection.get(secondPtr).getClass())) {
-                        BaseEquipment tmp = collection.get(secondPtr);
-                        collection.addOn(secondPtr, collection.get(firstPtr));
+                    if (type.isAssignableFrom(collection.get(uncheckedPtr).getClass())) {
+                        BaseEquipment tmp = collection.get(uncheckedPtr);
+                        collection.addOn(uncheckedPtr, collection.get(firstPtr));
                         collection.addOn(firstPtr, tmp);
+                        uncheckedPtr++;
+                        break;
                     }
+                    uncheckedPtr++;
                 }
             }
         }
     }
 
+    public static void sortByParameter(Collection collection, BaseParameterComparator comparator) {
+        sortByType(collection, comparator.returnComparedClasses());
+        for (int firstPtr = 0; firstPtr < collection.getSize()
+                && comparator.returnComparedClasses().isAssignableFrom(collection.get(firstPtr).getClass())
+                ; firstPtr++) {
 
-    public static void sortByWearDegree(Collection collection, Comparator<ArmorEquipment> comparator) {
-        //sortByType(collection, BaseEquipment.class);
-        int result = comparator.compare(new ArmorEquipment(), new ArmorEquipment());
-        /*
-        for (int ptr = 0; ptr < collection.getSize() - 1; ptr++) {
-            //int result = comparator.compare(collection.get(ptr),collection.get(ptr+1));
-            int result = comparator.compare(new ArmorEquipment(), new ArmorEquipment());
-            if(result < 0){
+            for (int secondPtr = firstPtr + 1; secondPtr < collection.getSize()
+                    && comparator.returnComparedClasses().isAssignableFrom(collection.get(secondPtr).getClass())
+                    ; secondPtr++) {
+
+                if (comparator.compare(collection.get(firstPtr), collection.get(secondPtr)) < 0) {
+                    BaseEquipment tmp = collection.get(secondPtr);
+                    collection.addOn(secondPtr, collection.get(firstPtr));
+                    collection.addOn(firstPtr, tmp);
+                }
 
             }
-        }*/
-    }
 
+        }
+
+    }
 }

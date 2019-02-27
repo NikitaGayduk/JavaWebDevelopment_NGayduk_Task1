@@ -11,21 +11,22 @@ public class Knight {
 
     public static void main(String[] args) {
         ArrayCollectionCreator collectionCreator = new ArrayCollectionCreator();
-        BaseBag bag = new BaseBag(collectionCreator.factoryMethodRandomFill(100));
+        BaseBag bag = new BaseBag(collectionCreator.factoryMethodRandomFill(10));
         Printer printer = new ConsolePrinter();
 
 
         printer.printArray(bag.getAll());
-/*        System.out.println("\n\n\n");
+/*      System.out.println("\n\n\n");
         printer.printArray(bag.searchByArmorType());
         System.out.println("\n\n\n");
         printer.printArray(bag.searchByArmorValue(100, 150));*/
         System.out.println("\n\n\n");
-        bag.sortByArmorEquipment();
+        //bag.sortByArmorEquipment();
+        bag.sortByArmorValue();
         printer.printArray(bag.getAll());
-
-        bag.sortByWearDegree();
-
+        //System.out.println("\n\n\n");
+        //bag.sortByWearDegree();
+        //printer.printArray(bag.getAll());
 
     }
 }

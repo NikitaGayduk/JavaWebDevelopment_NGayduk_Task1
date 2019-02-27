@@ -6,12 +6,15 @@ import by.epam.javawebtraining.gayduknikita.task1.model.entity.WeaponEquipment;
 import by.epam.javawebtraining.gayduknikita.task1.model.logic.calculator.Calculator;
 import by.epam.javawebtraining.gayduknikita.task1.model.logic.collection.ArrayCollection;
 import by.epam.javawebtraining.gayduknikita.task1.model.logic.collection.Collection;
-import by.epam.javawebtraining.gayduknikita.task1.model.logic.comporator.WearDegreeComporator;
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.comporator.ArmorValueComparator;
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.comporator.WearDegreeComparator;
 import by.epam.javawebtraining.gayduknikita.task1.model.logic.searcher.BaseEquipmentSearcher;
 import by.epam.javawebtraining.gayduknikita.task1.model.logic.sorter.BaseEquipmentSorter;
 
 public class BaseBag {
     private Collection collection;
+    private WearDegreeComparator wearDegreeComparator = new WearDegreeComparator();
+    private ArmorValueComparator armorValueComparator = new ArmorValueComparator();
 
 
     public BaseBag() {
@@ -48,7 +51,11 @@ public class BaseBag {
     }
 
     public void sortByWearDegree() {
-        BaseEquipmentSorter.sortByWearDegree(collection, new WearDegreeComporator());
+        BaseEquipmentSorter.sortByParameter(collection, wearDegreeComparator);
+    }
+
+    public void sortByArmorValue() {
+        BaseEquipmentSorter.sortByParameter(collection, armorValueComparator);
     }
 
     public BaseEquipment[] searchByWeaponType() {

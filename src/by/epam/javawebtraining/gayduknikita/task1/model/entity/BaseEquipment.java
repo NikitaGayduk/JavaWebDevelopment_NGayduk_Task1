@@ -20,12 +20,10 @@ public class BaseEquipment implements Comparable<BaseEquipment> {
 
 
     public enum WearDegree {
-
-        UNBROKEN,
-        SLIGHTLY_WORN,
+        BROKEN,
         THREADBARE,
-        BROKEN
-
+        SLIGHTLY_WORN,
+        UNBROKEN
     }
 
 
@@ -77,7 +75,6 @@ public class BaseEquipment implements Comparable<BaseEquipment> {
 
         return (this.price == equip.getPrice()) && (this.equipmentState == equip.equipmentState);
     }
-
 
 
     @Override

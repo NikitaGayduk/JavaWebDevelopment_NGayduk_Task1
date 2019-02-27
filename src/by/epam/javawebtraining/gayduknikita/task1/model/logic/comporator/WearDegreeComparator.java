@@ -1,17 +1,13 @@
 package by.epam.javawebtraining.gayduknikita.task1.model.logic.comporator;
 
-import by.epam.javawebtraining.gayduknikita.task1.model.entity.ArmorEquipment;
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
-import by.epam.javawebtraining.gayduknikita.task1.model.entity.TorsoArmor;
 
-import java.util.Comparator;
+public class WearDegreeComparator extends BaseParameterComparator<BaseEquipment> {
 
-public class WearDegreeComporator <T extends BaseEquipment> implements Comparator<T>{
-
-    public Class returnClass() {
+    public Class<BaseEquipment> returnComparedClasses() {
         return BaseEquipment.class;
     }
-/*
+
     @Override
     public int compare(BaseEquipment equip1, BaseEquipment equip2) {
         int result;
@@ -26,10 +22,5 @@ public class WearDegreeComporator <T extends BaseEquipment> implements Comparato
         }
         return result;
     }
-*/
 
-    @Override
-    public int compare(T o1, T o2) {
-        return 0;
-    }
 }
