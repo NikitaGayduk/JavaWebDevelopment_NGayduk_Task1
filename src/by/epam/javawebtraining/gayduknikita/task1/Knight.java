@@ -11,7 +11,7 @@ public class Knight {
 
     public static void main(String[] args) {
         ArrayCollectionCreator collectionCreator = new ArrayCollectionCreator();
-        BaseBag bag = new BaseBag(collectionCreator.factoryMethodRandomFill(20));
+        BaseBag bag = new BaseBag(collectionCreator.factoryMethodRandomFill(100));
         Printer printer = new ConsolePrinter();
 
 
