@@ -43,7 +43,7 @@ public class BaseEquipmentTest {
     public void equalsTest() {
         BaseEquipment equip1 = new BaseEquipment(10, BaseEquipment.WearDegree.UNBROKEN);
         BaseEquipment equip2 = new BaseEquipment(10, BaseEquipment.WearDegree.UNBROKEN);
-        assertEquals(true, equip1.equals(equip2));
+        assertEquals(equip1, equip2);
     }
 
     @Test

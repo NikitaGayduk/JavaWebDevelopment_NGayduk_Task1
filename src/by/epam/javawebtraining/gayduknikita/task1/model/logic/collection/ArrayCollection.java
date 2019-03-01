@@ -19,6 +19,7 @@ import java.util.Arrays;
 public class ArrayCollection implements Collection {
 
     private int ptr;
+    private static int DEFAULT_SIZE = 10;
 
     //can I make it package-private? or it's must be private?
     BaseEquipment[] equipArray;
@@ -28,23 +29,23 @@ public class ArrayCollection implements Collection {
     }
 
 
+
     public ArrayCollection() {
-        equipArray = new BaseEquipment[10];
+        equipArray = new BaseEquipment[DEFAULT_SIZE];
     }
 
     public ArrayCollection(int size) {
+        if (size < 0){
+            size = DEFAULT_SIZE;
+        }
         equipArray = new BaseEquipment[size];
     }
+
 
 
     int getPtr() {
         return ptr;
     }
-
-    void setPtr(int ptr) {
-        this.ptr = ptr;
-    }
-
 
     @Override
     public boolean add(BaseEquipment equip) {
@@ -67,7 +68,6 @@ public class ArrayCollection implements Collection {
     }
 
     @Override
-    // TODO: 18.02.2019 Can return null, in IDEA I can mark it like @Nullable and @NotNull, can I?
     public BaseEquipment get(int index) {
         if (equipArray[index] == null) {
             return null;
