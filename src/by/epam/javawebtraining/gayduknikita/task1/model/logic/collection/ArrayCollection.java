@@ -7,8 +7,7 @@
 package by.epam.javawebtraining.gayduknikita.task1.model.logic.collection;
 
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
-
-import java.util.Arrays;
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.exception.logicalexception.illegalparameterexception.IllegalCollectionIndexException;
 
 /**
  * The ArrayCollection class is a bicycle
@@ -21,7 +20,7 @@ public class ArrayCollection implements Collection {
     private int ptr;
     private static int DEFAULT_SIZE = 10;
 
-    //can I make it package-private? or it's must be private?
+
     BaseEquipment[] equipArray;
 
     {
@@ -29,18 +28,16 @@ public class ArrayCollection implements Collection {
     }
 
 
-
     public ArrayCollection() {
         equipArray = new BaseEquipment[DEFAULT_SIZE];
     }
 
     public ArrayCollection(int size) {
-        if (size < 0){
+        if (size < 0) {
             size = DEFAULT_SIZE;
         }
         equipArray = new BaseEquipment[size];
     }
-
 
 
     int getPtr() {
@@ -52,7 +49,6 @@ public class ArrayCollection implements Collection {
         if (ptr >= equipArray.length) {
             return false;
         }
-
         equipArray[ptr] = equip;
         ptr++;
         return true;
@@ -60,28 +56,21 @@ public class ArrayCollection implements Collection {
 
     @Override
     public boolean addOn(int index, BaseEquipment equip) {
-        if (index < 0 || index >= equipArray.length) {
+        if (index < 0 || index >= equipArray.length){
             return false;
         }
-        equipArray[index] = equip;
-        return true;
+            equipArray[index] = equip;
+            return true;
     }
 
     @Override
     public BaseEquipment get(int index) {
-        if (equipArray[index] == null) {
-            return null;
-        }
-        return equipArray[index];
+            return equipArray[index];
     }
 
     @Override
     public BaseEquipment[] getAll() {
-        BaseEquipment[] tmp = new BaseEquipment[getSize()];
-        for (int localPtr = 0; localPtr < tmp.length; localPtr++) {
-            tmp[localPtr] = this.get(localPtr);
-        }
-        return tmp;
+        return equipArray;
     }
 
     @Override
@@ -91,15 +80,14 @@ public class ArrayCollection implements Collection {
 
     @Override
     public boolean remove(int index) {
-        if (index < 0 || index >= equipArray.length || equipArray[index] == null) {
+        if (index < 0 || index >= equipArray.length || equipArray[index] == null){
             return false;
         }
-
-        /*
-         * Replace deleted value by last value
-         */
-        equipArray[index] = equipArray[ptr - 1];
-        equipArray[ptr - 1] = null;
-        return true;
+            /*
+             * Replace deleted value by last value
+             */
+            equipArray[index] = equipArray[ptr - 1];
+            equipArray[ptr - 1] = null;
+            return true;
     }
 }

@@ -8,6 +8,7 @@ import by.epam.javawebtraining.gayduknikita.task1.model.logic.collection.ArrayCo
 import by.epam.javawebtraining.gayduknikita.task1.model.logic.collection.Collection;
 import by.epam.javawebtraining.gayduknikita.task1.model.logic.comporator.ArmorValueComparator;
 import by.epam.javawebtraining.gayduknikita.task1.model.logic.comporator.WearDegreeComparator;
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.exception.logicalexception.illegalparameterexception.IllegalCollectionIndexException;
 import by.epam.javawebtraining.gayduknikita.task1.model.logic.searcher.BaseEquipmentSearcher;
 import by.epam.javawebtraining.gayduknikita.task1.model.logic.sorter.BaseEquipmentSorter;
 
@@ -15,6 +16,7 @@ public class BaseBag {
     private Collection collection;
     private WearDegreeComparator wearDegreeComparator = new WearDegreeComparator();
     private ArmorValueComparator armorValueComparator = new ArmorValueComparator();
+
 
 
     public BaseBag() {
@@ -30,6 +32,7 @@ public class BaseBag {
     }
 
 
+
     public boolean add(BaseEquipment equip) {
         return collection.add(equip);
     }
@@ -38,13 +41,21 @@ public class BaseBag {
         return collection.addOn(place, equip);
     }
 
-    public BaseEquipment get(int place) {
-        return collection.get(place);
+
+
+    public BaseEquipment get(int place) throws IllegalCollectionIndexException {
+        try {
+            return collection.get(place);
+        } catch (IndexOutOfBoundsException e){
+            throw new IllegalCollectionIndexException();
+        }
     }
 
     public BaseEquipment[] getAll() {
         return collection.getAll();
     }
+
+
 
     public void sortByArmorEquipment() {
         BaseEquipmentSorter.sortByType(collection, ArmorEquipment.class);
@@ -58,6 +69,8 @@ public class BaseBag {
         BaseEquipmentSorter.sortByParameter(collection, armorValueComparator);
     }
 
+
+
     public BaseEquipment[] searchByWeaponType() {
         return BaseEquipmentSearcher.searchByType(collection, WeaponEquipment.class);
     }
@@ -69,6 +82,8 @@ public class BaseBag {
     public BaseEquipment[] searchByArmorValue(int min, int max) {
         return BaseEquipmentSearcher.searchByArmorValue(collection, min, max);
     }
+
+
 
     public int calculateCost() {
         return Calculator.calculateCost(collection.getAll());

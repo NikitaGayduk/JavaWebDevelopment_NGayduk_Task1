@@ -13,10 +13,7 @@ public class BaseEquipmentSearcher {
         ArrayList<BaseEquipment> list = new ArrayList<>();
 
         for (int ptr = 0; ptr < collection.getSize(); ptr++) {
-            if (collection.get(ptr) == null) {
-                continue;
-            }
-            if (equipmentType.isAssignableFrom(collection.get(ptr).getClass())) {
+            if (collection.get(ptr) != null && equipmentType.isAssignableFrom(collection.get(ptr).getClass())) {
                 list.add(collection.get(ptr));
             }
         }

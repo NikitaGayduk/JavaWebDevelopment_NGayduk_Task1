@@ -37,6 +37,16 @@ public class DynamicArrayCollection extends ArrayCollection {
     }
 
     private void resize() {
+        BaseEquipment[] equipArrayTmp = new BaseEquipment[generateNewSize()];
+
+        for (int ptr = 0; ptr < this.equipArray.length; ptr++) {
+            equipArrayTmp[ptr] = this.get(ptr);
+        }
+
+        this.equipArray = equipArrayTmp;
+    }
+
+    private int generateNewSize(){
         int newSize;
 
         if (this.equipArray.length < DEFAULT_SIZE) {
@@ -44,14 +54,6 @@ public class DynamicArrayCollection extends ArrayCollection {
         } else {
             newSize = (int) (this.equipArray.length * DEFAULT_RESIZE_FACTOR);
         }
-
-        BaseEquipment[] equipArrayTmp = new BaseEquipment[newSize];
-
-        for (int ptr = 0; ptr < this.equipArray.length; ptr++) {
-            equipArrayTmp[ptr] = this.get(ptr);
-        }
-
-        this.equipArray = equipArrayTmp;
-
+        return newSize;
     }
 }

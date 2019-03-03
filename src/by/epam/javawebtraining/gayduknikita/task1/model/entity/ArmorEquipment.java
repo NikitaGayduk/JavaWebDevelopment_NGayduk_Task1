@@ -6,6 +6,8 @@
 
 package by.epam.javawebtraining.gayduknikita.task1.model.entity;
 
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.exception.logicalexception.illegalparameterexception.IllegalArmorValueException;
+
 import java.util.Objects;
 
 /**
@@ -20,23 +22,36 @@ public class ArmorEquipment extends BaseEquipment {
     private static int DEFAULT_ARMOR = 300;
 
 
+
     public ArmorEquipment() {
         super();
-        armorValue = DEFAULT_ARMOR;
+        this.armorValue = DEFAULT_ARMOR;
     }
 
     public ArmorEquipment(int cost, WearDegree state, int armorValue) {
         super(cost, state);
-        this.armorValue = armorValue;
+        if(armorValue < 0){
+            this.armorValue = DEFAULT_ARMOR;
+        } else {
+            this.armorValue = armorValue;
+        }
     }
 
     public ArmorEquipment(ArmorEquipment equip) {
         super(equip);
-        armorValue = equip.armorValue;
+        if (equip == null) {
+            this.armorValue = DEFAULT_ARMOR;
+        } else {
+            this.armorValue = equip.armorValue;
+        }
     }
 
 
-    public void setArmorValue(int armorValue) {
+
+    public void setArmorValue(int armorValue) throws IllegalArmorValueException {
+        if (armorValue < 0){
+            throw new IllegalArmorValueException();
+        }
         this.armorValue = armorValue;
     }
 

@@ -1,10 +1,6 @@
-/*BaseEquipment
- * 1.1
- * 15/02/2019
- *GaydukNikita
- */
-
 package by.epam.javawebtraining.gayduknikita.task1.model.entity;
+
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.exception.logicalexception.illegalparameterexception.IllegalPriceException;
 
 /**
  * The BaseEquipment class is a basic
@@ -15,8 +11,9 @@ public class BaseEquipment implements Comparable<BaseEquipment> {
 
     private int price;
     private WearDegree equipmentState;
-    private static int DEFAULT_COST = 200;
+    private static int DEFAULT_PRICE = 200;
     private static WearDegree DEFAULT_STATE = WearDegree.UNBROKEN;
+
 
 
     public enum WearDegree {
@@ -27,23 +24,37 @@ public class BaseEquipment implements Comparable<BaseEquipment> {
     }
 
 
+
     public BaseEquipment() {
-        price = DEFAULT_COST;
+        price = DEFAULT_PRICE;
         equipmentState = DEFAULT_STATE;
     }
 
     public BaseEquipment(int price, WearDegree equipmentState) {
-        this.price = price;
-        this.equipmentState = equipmentState;
+        if(price < 0){
+            this.price = DEFAULT_PRICE;
+        } else {
+            this.price = price;
+        }
+            this.equipmentState = equipmentState;
     }
 
     public BaseEquipment(BaseEquipment equip) {
-        price = equip.price;
-        equipmentState = equip.equipmentState;
+        if(equip == null){
+            this.price = DEFAULT_PRICE;
+            this.equipmentState = DEFAULT_STATE;
+        } else {
+            this.price = equip.price;
+            this.equipmentState = equip.equipmentState;
+        }
     }
 
 
-    public void setPrice(int price) {
+
+    public void setPrice(int price) throws IllegalPriceException {
+        if(price < 0){
+            throw new IllegalPriceException();
+        }
         this.price = price;
     }
 

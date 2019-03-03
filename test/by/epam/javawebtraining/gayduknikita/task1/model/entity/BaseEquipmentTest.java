@@ -1,5 +1,6 @@
 package by.epam.javawebtraining.gayduknikita.task1.model.entity;
 
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.exception.logicalexception.illegalparameterexception.IllegalPriceException;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -13,8 +14,14 @@ public class BaseEquipmentTest {
         assertEquals(BaseEquipment.WearDegree.UNBROKEN, equip.getEquipmentState());
     }
 
+    @Test (expected = IllegalPriceException.class)
+    public void setIllegalPriceTest() throws IllegalPriceException {
+        BaseEquipment equip = new BaseEquipment();
+        equip.setPrice(-10);
+    }
+
     @Test
-    public void setPriceTest() {
+    public void setPriceTest() throws IllegalPriceException {
         BaseEquipment equip = new BaseEquipment();
         equip.setPrice(10);
         assertEquals(10,equip.getPrice());

@@ -6,6 +6,9 @@
 
 package by.epam.javawebtraining.gayduknikita.task1.model.entity;
 
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.exception.logicalexception.illegalparameterexception.IllegalChestGirthException;
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.exception.logicalexception.illegalparameterexception.IllegalWaistGirthException;
+
 import java.util.Objects;
 
 /**
@@ -21,6 +24,7 @@ public class TorsoArmor extends ArmorEquipment {
     private static int DEFAULT_CHEST_GIRTH = 110;
 
 
+
     public TorsoArmor() {
         super();
         waistGirth = DEFAULT_WAIST_GIRTH;
@@ -29,31 +33,52 @@ public class TorsoArmor extends ArmorEquipment {
 
     public TorsoArmor(int cost, WearDegree state, int armor, double waistGirth, double chestGirth) {
         super(cost, state, armor);
-        this.waistGirth = waistGirth;
-        this.chestGirth = chestGirth;
+        if (waistGirth < 0) {
+            this.waistGirth = DEFAULT_WAIST_GIRTH;
+        } else {
+            this.waistGirth = waistGirth;
+        }
+
+        if (chestGirth < 0) {
+            this.chestGirth = DEFAULT_CHEST_GIRTH;
+        } else {
+            this.chestGirth = chestGirth;
+        }
     }
 
     public TorsoArmor(TorsoArmor torsoArmor) {
         super(torsoArmor);
-        this.waistGirth = torsoArmor.waistGirth;
-        this.chestGirth = torsoArmor.chestGirth;
+        if (torsoArmor == null) {
+            this.waistGirth = DEFAULT_WAIST_GIRTH;
+            this.chestGirth = DEFAULT_CHEST_GIRTH;
+        } else {
+            this.waistGirth = torsoArmor.waistGirth;
+            this.chestGirth = torsoArmor.chestGirth;
+        }
     }
 
+
+
+    public void setWaistGirth(double waistGirth) throws IllegalWaistGirthException {
+        if (waistGirth < 0) {
+            throw new IllegalWaistGirthException();
+        }
+        this.waistGirth = waistGirth;
+    }
 
     public double getWaistGirth() {
         return waistGirth;
     }
 
-    public void setWaistGirth(double waistGirth) {
-        this.waistGirth = waistGirth;
+    public void setChestGirth(double chestGirth) throws IllegalChestGirthException {
+        if (chestGirth < 0) {
+            throw new IllegalChestGirthException();
+        }
+        this.chestGirth = chestGirth;
     }
 
     public double getChestGirth() {
         return chestGirth;
-    }
-
-    public void setChestGirth(double chestGirth) {
-        this.chestGirth = chestGirth;
     }
 
     @Override

@@ -1,10 +1,6 @@
-/*WeaponEquipment
- * 1.0
- * 19/02/2019
- *GaydukNikita
- */
-
 package by.epam.javawebtraining.gayduknikita.task1.model.entity;
+
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.exception.logicalexception.illegalparameterexception.IllegalDamageValueException;
 
 import java.util.Objects;
 
@@ -23,22 +19,33 @@ public class WeaponEquipment extends BaseEquipment {
 
     public WeaponEquipment() {
         super();
-        damageValue = DEFAULT_DAMAGE;
+        this.damageValue = DEFAULT_DAMAGE;
     }
 
     public WeaponEquipment(int cost, WearDegree state, int damageValue) {
         super(cost, state);
-        this.damageValue = damageValue;
+        if (damageValue < 0) {
+            this.damageValue = DEFAULT_DAMAGE;
+        } else {
+            this.damageValue = damageValue;
+        }
     }
 
     public WeaponEquipment(WeaponEquipment equip) {
         super(equip);
-        damageValue = equip.damageValue;
+        if (equip == null) {
+            this.damageValue = DEFAULT_DAMAGE;
+        } else {
+            this.damageValue = equip.damageValue;
+        }
     }
 
 
 
-    public void setDamageValue(int damageValue) {
+    public void setDamageValue(int damageValue) throws IllegalDamageValueException {
+        if (damageValue < 0) {
+            throw new IllegalDamageValueException();
+        }
         this.damageValue = damageValue;
     }
 

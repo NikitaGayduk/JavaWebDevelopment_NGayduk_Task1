@@ -6,6 +6,8 @@
 
 package by.epam.javawebtraining.gayduknikita.task1.model.entity;
 
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.exception.logicalexception.illegalparameterexception.IllegalCuttingDamageException;
+
 import java.util.Objects;
 
 /**
@@ -17,23 +19,38 @@ import java.util.Objects;
 public class CuttingWeapon extends WeaponEquipment {
 
     private int cuttingDamage;
-    private static int DEFAULT_CUTTING_DMG = 30;
+    private static int DEFAULT_CUTTING_DAMAGE = 30;
+
+
 
     public CuttingWeapon() {
-        this.cuttingDamage = DEFAULT_CUTTING_DMG;
+        this.cuttingDamage = DEFAULT_CUTTING_DAMAGE;
     }
 
-    public CuttingWeapon(int cost,WearDegree state, int damage, int cuttingDamage) {
-        super(cost,state,damage);
-        this.cuttingDamage = cuttingDamage;
+    public CuttingWeapon(int cost, WearDegree state, int damage, int cuttingDamage) {
+        super(cost, state, damage);
+        if (cuttingDamage < 0){
+            this.cuttingDamage = DEFAULT_CUTTING_DAMAGE;
+        } else {
+            this.cuttingDamage = cuttingDamage;
+        }
     }
 
     public CuttingWeapon(CuttingWeapon equip) {
         super(equip);
-        cuttingDamage = equip.cuttingDamage;
+        if (equip == null){
+            this.cuttingDamage = DEFAULT_CUTTING_DAMAGE;
+        } else {
+            this.cuttingDamage = equip.cuttingDamage;
+        }
     }
 
-    public void setCuttingDamage(int cuttingDamage) {
+
+
+    public void setCuttingDamage(int cuttingDamage) throws IllegalCuttingDamageException {
+        if(cuttingDamage < 0){
+            throw new IllegalCuttingDamageException();
+        }
         this.cuttingDamage = cuttingDamage;
     }
 

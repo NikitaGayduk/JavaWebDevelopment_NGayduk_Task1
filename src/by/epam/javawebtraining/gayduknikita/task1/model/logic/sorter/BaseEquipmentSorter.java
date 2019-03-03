@@ -23,10 +23,9 @@ public class BaseEquipmentSorter {
             if (collection.get(firstPtr) == null || collection.get(firstPtr).getClass() != type) {
 
                 while (uncheckedPtr < collection.getSize()) {
-                    if (collection.get(uncheckedPtr) == null) {
-                        continue;
-                    }
-                    if (type.isAssignableFrom(collection.get(uncheckedPtr).getClass())) {
+                    if (collection.get(uncheckedPtr) != null
+                            && type.isAssignableFrom(collection.get(uncheckedPtr).getClass())) {
+
                         BaseEquipment tmp = collection.get(uncheckedPtr);
                         collection.addOn(uncheckedPtr, collection.get(firstPtr));
                         collection.addOn(firstPtr, tmp);
