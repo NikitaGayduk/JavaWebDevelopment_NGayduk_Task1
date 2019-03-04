@@ -3,6 +3,7 @@ package by.epam.javawebtraining.gayduknikita.task1.model.logic.searcher;
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.ArmorEquipment;
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
 import by.epam.javawebtraining.gayduknikita.task1.model.logic.collection.Collection;
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.exception.logicalexception.illegalparameterexception.IllegalArmorValueException;
 
 import java.util.ArrayList;
 
@@ -21,14 +22,18 @@ public class BaseEquipmentSearcher {
         return list.toArray(new BaseEquipment[list.size()]);
     }
 
-    public static BaseEquipment[] searchByArmorValue(Collection collection, int min, int max) {
+    public static BaseEquipment[] searchByArmorValue(Collection collection, int min, int max) throws IllegalArmorValueException {
+        if (min < 0 || min > max || max < 0){
+            throw new IllegalArmorValueException();
+        }
+
         BaseEquipment[] array = searchByType(collection, ArmorEquipment.class);
 
         ArrayList<BaseEquipment> list = new ArrayList<>();
 
         for (int ptr = 0; ptr < array.length; ptr++) {
-            if (((ArmorEquipment) array[ptr]).getArmorValue() > min
-                    && ((ArmorEquipment) array[ptr]).getArmorValue() < max) {
+            if (((ArmorEquipment) array[ptr]).getArmorValue() >= min
+                    && ((ArmorEquipment) array[ptr]).getArmorValue() <= max) {
                 list.add(array[ptr]);
             }
         }

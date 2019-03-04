@@ -8,10 +8,10 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class ArrayCollectionTest {
-    ArrayCollection equipArray = new ArrayCollection(3);
-    BaseEquipment equip1 = new BaseEquipment(10, BaseEquipment.WearDegree.UNBROKEN);
-    BaseEquipment equip2 = new BaseEquipment(20, BaseEquipment.WearDegree.UNBROKEN);
-    BaseEquipment equip3 = new BaseEquipment(30, BaseEquipment.WearDegree.UNBROKEN);
+    private ArrayCollection equipArray = new ArrayCollection(3);
+    private BaseEquipment equip1 = new BaseEquipment(10, BaseEquipment.WearDegree.UNBROKEN);
+    private BaseEquipment equip2 = new BaseEquipment(20, BaseEquipment.WearDegree.UNBROKEN);
+    private BaseEquipment equip3 = new BaseEquipment(30, BaseEquipment.WearDegree.UNBROKEN);
 
     @Before
     public void setEquipArrayWithNull() {

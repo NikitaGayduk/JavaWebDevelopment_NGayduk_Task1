@@ -6,8 +6,9 @@ import by.epam.javawebtraining.gayduknikita.task1.model.entity.WeaponEquipment;
 import by.epam.javawebtraining.gayduknikita.task1.model.logic.calculator.Calculator;
 import by.epam.javawebtraining.gayduknikita.task1.model.logic.collection.ArrayCollection;
 import by.epam.javawebtraining.gayduknikita.task1.model.logic.collection.Collection;
-import by.epam.javawebtraining.gayduknikita.task1.model.logic.comporator.ArmorValueComparator;
-import by.epam.javawebtraining.gayduknikita.task1.model.logic.comporator.WearDegreeComparator;
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.comparator.ArmorValueComparator;
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.comparator.WearDegreeComparator;
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.exception.logicalexception.illegalparameterexception.IllegalArmorValueException;
 import by.epam.javawebtraining.gayduknikita.task1.model.logic.exception.logicalexception.illegalparameterexception.IllegalCollectionIndexException;
 import by.epam.javawebtraining.gayduknikita.task1.model.logic.searcher.BaseEquipmentSearcher;
 import by.epam.javawebtraining.gayduknikita.task1.model.logic.sorter.BaseEquipmentSorter;
@@ -79,7 +80,7 @@ public class BaseBag {
         return BaseEquipmentSearcher.searchByType(collection, ArmorEquipment.class);
     }
 
-    public BaseEquipment[] searchByArmorValue(int min, int max) {
+    public BaseEquipment[] searchByArmorValue(int min, int max) throws IllegalArmorValueException {
         return BaseEquipmentSearcher.searchByArmorValue(collection, min, max);
     }
 

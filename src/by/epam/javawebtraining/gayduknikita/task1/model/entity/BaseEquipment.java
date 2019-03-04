@@ -9,10 +9,11 @@ import by.epam.javawebtraining.gayduknikita.task1.model.logic.exception.logicale
 
 public class BaseEquipment implements Comparable<BaseEquipment> {
 
-    private int price;
-    private WearDegree equipmentState;
     private static int DEFAULT_PRICE = 200;
     private static WearDegree DEFAULT_STATE = WearDegree.UNBROKEN;
+
+    private int price;
+    private WearDegree equipmentState;
 
 
 

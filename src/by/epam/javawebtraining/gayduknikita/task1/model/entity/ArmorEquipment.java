@@ -18,8 +18,9 @@ import java.util.Objects;
 
 public class ArmorEquipment extends BaseEquipment {
 
-    private int armorValue;
     private static int DEFAULT_ARMOR = 300;
+
+    private int armorValue;
 
 
 

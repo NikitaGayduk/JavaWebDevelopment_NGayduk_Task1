@@ -8,7 +8,7 @@ package by.epam.javawebtraining.gayduknikita.task1.model.logic.sorter;
 
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
 import by.epam.javawebtraining.gayduknikita.task1.model.logic.collection.Collection;
-import by.epam.javawebtraining.gayduknikita.task1.model.logic.comporator.BaseParameterComparator;
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.comparator.BaseParameterComparator;
 
 public class BaseEquipmentSorter {
 

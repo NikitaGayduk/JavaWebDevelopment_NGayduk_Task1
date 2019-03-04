@@ -17,8 +17,9 @@ import by.epam.javawebtraining.gayduknikita.task1.model.logic.exception.logicale
 
 public class ArrayCollection implements Collection {
 
-    private int ptr;
     private static int DEFAULT_SIZE = 10;
+
+    private int ptr;
 
 
     BaseEquipment[] equipArray;

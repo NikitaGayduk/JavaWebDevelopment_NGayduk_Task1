@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 
 
 public class CalculatorTest {
-    private final BaseEquipment[] array = new BaseEquipment[3];
+    private BaseEquipment[] array = new BaseEquipment[3];
 
     @Before
     public void setData() {

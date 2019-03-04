@@ -1,4 +1,4 @@
-package by.epam.javawebtraining.gayduknikita.task1.model.logic.comporator;
+package by.epam.javawebtraining.gayduknikita.task1.model.logic.comparator;
 
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.ArmorEquipment;
 

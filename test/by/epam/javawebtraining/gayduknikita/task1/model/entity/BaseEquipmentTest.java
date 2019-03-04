@@ -1,62 +1,73 @@
 package by.epam.javawebtraining.gayduknikita.task1.model.entity;
 
 import by.epam.javawebtraining.gayduknikita.task1.model.logic.exception.logicalexception.illegalparameterexception.IllegalPriceException;
+import org.junit.After;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class BaseEquipmentTest {
+    private BaseEquipment equip;
+    private BaseEquipment equip1;
+    private BaseEquipment equip2;
+
+    @After
+    public void clearData(){
+        equip = null;
+        equip1 = null;
+        equip2 = null;
+    }
 
     @Test
     public void parameterizedConstructorTest(){
-        BaseEquipment equip = new BaseEquipment(10, BaseEquipment.WearDegree.UNBROKEN);
+        equip = new BaseEquipment(10, BaseEquipment.WearDegree.UNBROKEN);
         assertEquals(10,equip.getPrice());
         assertEquals(BaseEquipment.WearDegree.UNBROKEN, equip.getEquipmentState());
     }
 
     @Test (expected = IllegalPriceException.class)
     public void setIllegalPriceTest() throws IllegalPriceException {
-        BaseEquipment equip = new BaseEquipment();
+        equip = new BaseEquipment();
         equip.setPrice(-10);
     }
 
     @Test
     public void setPriceTest() throws IllegalPriceException {
-        BaseEquipment equip = new BaseEquipment();
+        equip = new BaseEquipment();
         equip.setPrice(10);
         assertEquals(10,equip.getPrice());
     }
 
     @Test
     public void getPriceTest() {
-        BaseEquipment equip = new BaseEquipment(10, BaseEquipment.WearDegree.UNBROKEN);
+        equip = new BaseEquipment(10, BaseEquipment.WearDegree.UNBROKEN);
         assertEquals(10,equip.getPrice());
     }
 
     @Test
     public void setEquipmentStateTest() {
-        BaseEquipment equip = new BaseEquipment();
+        equip = new BaseEquipment();
         equip.setEquipmentState(BaseEquipment.WearDegree.UNBROKEN);
         assertEquals(BaseEquipment.WearDegree.UNBROKEN,equip.getEquipmentState());
     }
 
     @Test
     public void getEquipmentStateTest() {
-        BaseEquipment equip = new BaseEquipment(10, BaseEquipment.WearDegree.UNBROKEN);
+        equip = new BaseEquipment(10, BaseEquipment.WearDegree.UNBROKEN);
         assertEquals(BaseEquipment.WearDegree.UNBROKEN,equip.getEquipmentState());
     }
 
     @Test
     public void equalsTest() {
-        BaseEquipment equip1 = new BaseEquipment(10, BaseEquipment.WearDegree.UNBROKEN);
-        BaseEquipment equip2 = new BaseEquipment(10, BaseEquipment.WearDegree.UNBROKEN);
+        equip1 = new BaseEquipment(10, BaseEquipment.WearDegree.UNBROKEN);
+        equip2 = new BaseEquipment(10, BaseEquipment.WearDegree.UNBROKEN);
         assertEquals(equip1, equip2);
     }
 
     @Test
     public void compareToTest() {
-        BaseEquipment equip1 = new BaseEquipment(20, BaseEquipment.WearDegree.UNBROKEN);
-        BaseEquipment equip2 = new BaseEquipment(10, BaseEquipment.WearDegree.UNBROKEN);
+        equip1 = new BaseEquipment(20, BaseEquipment.WearDegree.UNBROKEN);
+        equip2 = new BaseEquipment(10, BaseEquipment.WearDegree.UNBROKEN);
         assertEquals(1,equip1.compareTo(equip2));
     }
 }

@@ -18,10 +18,11 @@ import java.util.Objects;
 
 public class TorsoArmor extends ArmorEquipment {
 
-    private double waistGirth;
-    private double chestGirth;
     private static int DEFAULT_WAIST_GIRTH = 80;
     private static int DEFAULT_CHEST_GIRTH = 110;
+
+    private double waistGirth;
+    private double chestGirth;
 
 
 
