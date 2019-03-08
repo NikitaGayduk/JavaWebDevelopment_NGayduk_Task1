@@ -3,32 +3,35 @@ package by.epam.javawebtraining.gayduknikita.task1.model.logic.searcher;
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.*;
 import by.epam.javawebtraining.gayduknikita.task1.model.logic.collection.ArrayCollection;
 import by.epam.javawebtraining.gayduknikita.task1.model.logic.collection.Collection;
-import by.epam.javawebtraining.gayduknikita.task1.model.logic.exception.logicalexception.illegalparameterexception.IllegalArmorValueException;
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.exception.logicalexception.illegalparameterexception.IllegalRangeException;
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.searcher.searchbehavior.AbstractSearchBehavior;
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.searcher.searchbehavior.ArmorSearchBehavior;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class BaseEquipmentSearcherTest {
-    private static BaseEquipmentSearcher searcher = new BaseEquipmentSearcher();
+public class EquipmentSearcherTest {
+    private static EquipmentSearcher searcher = new EquipmentSearcher();
+    private static AbstractSearchBehavior behavior = new ArmorSearchBehavior();
     private static Collection collection = new ArrayCollection(7);
     private static BaseEquipment[] searchByTypeResult = new BaseEquipment[4];
     private static BaseEquipment[] searchByArmorResult = new BaseEquipment[3];
 
 
-    private static BaseEquipment baseEquip
+    private static final BaseEquipment baseEquip
             = null;
-    private static BaseEquipment weaponEquip
+    private static final BaseEquipment weaponEquip
             = new WeaponEquipment();
-    private static BaseEquipment cuttingWeaponEquip
+    private static final BaseEquipment cuttingWeaponEquip
             = new CuttingWeapon();
-    private static BaseEquipment armorEquip100
+    private static final BaseEquipment armorEquip100
             = new ArmorEquipment(10, BaseEquipment.WearDegree.UNBROKEN, 100);
-    private static BaseEquipment armorEquip200
+    private static final BaseEquipment armorEquip200
             = new ArmorEquipment(10, BaseEquipment.WearDegree.UNBROKEN, 200);
-    private static BaseEquipment torsoEquip200
+    private static final BaseEquipment torsoEquip200
             = new TorsoArmor(10, BaseEquipment.WearDegree.UNBROKEN, 200, 100, 100);
-    private static BaseEquipment torsoEquip300
+    private static final BaseEquipment torsoEquip300
             = new TorsoArmor(10, BaseEquipment.WearDegree.UNBROKEN, 300, 100, 100);
 
 
@@ -62,12 +65,12 @@ public class BaseEquipmentSearcherTest {
 
     @Test
     public void searchByTypeTest() {
-        assertArrayEquals(searchByTypeResult,searcher.searchByType(collection,ArmorEquipment.class));
+        assertArrayEquals(searchByTypeResult,searcher.equipmentTypeSearch(collection,ArmorEquipment.class));
     }
 
 
     @Test
-    public void searchByArmorValueTest() throws IllegalArmorValueException {
-        assertArrayEquals(searchByArmorResult,searcher.searchByArmorValue(collection,200,300));
+    public void searchByArmorValueTest() throws IllegalRangeException {
+        assertArrayEquals(searchByArmorResult,searcher.parameterSearch(behavior,collection,200,300));
     }
 }

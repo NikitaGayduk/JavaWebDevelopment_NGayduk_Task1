@@ -10,13 +10,17 @@ import by.epam.javawebtraining.gayduknikita.task1.model.logic.comparator.ArmorVa
 import by.epam.javawebtraining.gayduknikita.task1.model.logic.comparator.WearDegreeComparator;
 import by.epam.javawebtraining.gayduknikita.task1.model.logic.exception.logicalexception.illegalparameterexception.IllegalArmorValueException;
 import by.epam.javawebtraining.gayduknikita.task1.model.logic.exception.logicalexception.illegalparameterexception.IllegalCollectionIndexException;
-import by.epam.javawebtraining.gayduknikita.task1.model.logic.searcher.BaseEquipmentSearcher;
-import by.epam.javawebtraining.gayduknikita.task1.model.logic.sorter.BaseEquipmentSorter;
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.exception.logicalexception.illegalparameterexception.IllegalRangeException;
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.searcher.EquipmentSearcher;
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.searcher.searchbehavior.AbstractSearchBehavior;
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.searcher.searchbehavior.ArmorSearchBehavior;
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.sorter.EquipmentSorter;
 
 public class BaseBag {
     private Collection collection;
     private WearDegreeComparator wearDegreeComparator = new WearDegreeComparator();
     private ArmorValueComparator armorValueComparator = new ArmorValueComparator();
+    private AbstractSearchBehavior armorSearchBehavior = new ArmorSearchBehavior();
 
 
 
@@ -59,29 +63,29 @@ public class BaseBag {
 
 
     public void sortByArmorEquipment() {
-        BaseEquipmentSorter.sortByType(collection, ArmorEquipment.class);
+        EquipmentSorter.sortByType(collection, ArmorEquipment.class);
     }
 
     public void sortByWearDegree() {
-        BaseEquipmentSorter.sortByParameter(collection, wearDegreeComparator);
+        EquipmentSorter.sortByParameter(collection, wearDegreeComparator);
     }
 
     public void sortByArmorValue() {
-        BaseEquipmentSorter.sortByParameter(collection, armorValueComparator);
+        EquipmentSorter.sortByParameter(collection, armorValueComparator);
     }
 
 
 
     public BaseEquipment[] searchByWeaponType() {
-        return BaseEquipmentSearcher.searchByType(collection, WeaponEquipment.class);
+        return EquipmentSearcher.equipmentTypeSearch(collection, WeaponEquipment.class);
     }
 
     public BaseEquipment[] searchByArmorType() {
-        return BaseEquipmentSearcher.searchByType(collection, ArmorEquipment.class);
+        return EquipmentSearcher.equipmentTypeSearch(collection, ArmorEquipment.class);
     }
 
-    public BaseEquipment[] searchByArmorValue(int min, int max) throws IllegalArmorValueException {
-        return BaseEquipmentSearcher.searchByArmorValue(collection, min, max);
+    public BaseEquipment[] searchByArmorValue(int min, int max) throws IllegalRangeException {
+        return EquipmentSearcher.parameterSearch(armorSearchBehavior, collection,min,max);
     }
 
 

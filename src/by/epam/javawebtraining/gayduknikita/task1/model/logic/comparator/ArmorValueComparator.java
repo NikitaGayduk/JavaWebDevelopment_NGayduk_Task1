@@ -2,7 +2,7 @@ package by.epam.javawebtraining.gayduknikita.task1.model.logic.comparator;
 
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.ArmorEquipment;
 
-public class ArmorValueComparator extends BaseParameterComparator<ArmorEquipment> {
+public class ArmorValueComparator implements BaseParameterComparator<ArmorEquipment> {
     @Override
     public Class<ArmorEquipment> returnComparedClasses() {
         return ArmorEquipment.class;

@@ -12,7 +12,7 @@ import java.util.Objects;
 
 public class WeaponEquipment extends BaseEquipment {
 
-    private static int DEFAULT_DAMAGE = 200;
+    public static final  int DEFAULT_DAMAGE = 200;
 
     private int damageValue;
 

@@ -18,11 +18,11 @@ import static org.junit.Assert.*;
 @RunWith(Parameterized.class)
 public class ArmorValueComparatorTest {
     private ArmorValueComparator comparator = new ArmorValueComparator();
-    private static BaseEquipment armorEquip1
+    private static final BaseEquipment armorEquip1
             = new ArmorEquipment(10, BaseEquipment.WearDegree.UNBROKEN, 100);
-    private static BaseEquipment armorEquip2
+    private static final BaseEquipment armorEquip2
             = new ArmorEquipment(10, BaseEquipment.WearDegree.UNBROKEN, 200);
-    private static BaseEquipment torsoArmor
+    private static final BaseEquipment torsoArmor
             = new TorsoArmor(10, BaseEquipment.WearDegree.UNBROKEN, 300, 100, 100);
 
 

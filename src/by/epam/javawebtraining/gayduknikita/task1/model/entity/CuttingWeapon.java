@@ -18,7 +18,7 @@ import java.util.Objects;
 
 public class CuttingWeapon extends WeaponEquipment {
 
-    private static int DEFAULT_CUTTING_DAMAGE = 30;
+    public static final  int DEFAULT_CUTTING_DAMAGE = 30;
 
     private int cuttingDamage;
 
