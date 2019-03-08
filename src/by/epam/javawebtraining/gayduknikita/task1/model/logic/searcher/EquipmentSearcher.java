@@ -13,14 +13,14 @@ public class EquipmentSearcher {
 
 
     public EquipmentSearcher() {
-        this.behavior = new PriceSearchBehavior();
+        behavior = new PriceSearchBehavior();
     }
 
-    public EquipmentSearcher(AbstractSearchBehavior behavior) {
-        this.behavior = behavior;
+    public EquipmentSearcher(AbstractSearchBehavior behav) {
+        behavior = behav;
     }
 
-    public static void setBehavior(AbstractSearchBehavior behav){
+    private static void setBehavior(AbstractSearchBehavior behav){
         behavior = behav;
     }
 
