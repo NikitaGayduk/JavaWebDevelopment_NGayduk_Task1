@@ -1,17 +1,9 @@
 package by.epam.javawebtraining.gayduknikita.task1.model.logic.calculator;
 
-import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
+import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseBag;
 
-public class Calculator {
-    public static int calculateCost(BaseEquipment[] collection) {
-        int summaryCost = 0;
+public interface Calculator {
 
-        for (int ptr = 0; ptr < collection.length; ptr++) {
-            if (collection[ptr] != null) {
-                summaryCost += collection[ptr].getPrice();
-            }
-        }
+    int calculate(BaseBag container);
 
-        return summaryCost;
-    }
 }

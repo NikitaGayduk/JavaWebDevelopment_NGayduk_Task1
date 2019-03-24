@@ -1,11 +1,11 @@
-package by.epam.javawebtraining.gayduknikita.task1.util.equipcreator;
+package by.epam.javawebtraining.gayduknikita.task1.util.creator.equipmentcreator;
 
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.WeaponEquipment;
 
-import static by.epam.javawebtraining.gayduknikita.task1.util.equipcreator.EquipParamRandomizer.*;
+import static by.epam.javawebtraining.gayduknikita.task1.util.creator.equipmentcreator.EquipParamRandomizer.*;
 
-public class WeaponCreator implements Creator {
+public class WeaponCreator implements EquipmentCreator {
 
     @Override
     public BaseEquipment factoryMethod() {

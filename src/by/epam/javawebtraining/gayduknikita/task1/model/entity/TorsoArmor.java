@@ -18,8 +18,8 @@ import java.util.Objects;
 
 public class TorsoArmor extends ArmorEquipment {
 
-    public static final  int DEFAULT_WAIST_GIRTH = 80;
-    public static final  int DEFAULT_CHEST_GIRTH = 110;
+    private static final  int DEFAULT_WAIST_GIRTH = 80;
+    private static final  int DEFAULT_CHEST_GIRTH = 110;
 
     private double waistGirth;
     private double chestGirth;
@@ -34,27 +34,27 @@ public class TorsoArmor extends ArmorEquipment {
 
     public TorsoArmor(int cost, WearDegree state, int armor, double waistGirth, double chestGirth) {
         super(cost, state, armor);
-        if (waistGirth < 0) {
-            this.waistGirth = DEFAULT_WAIST_GIRTH;
-        } else {
+        if (waistGirth > 0) {
             this.waistGirth = waistGirth;
+        } else {
+            this.waistGirth = DEFAULT_WAIST_GIRTH;
         }
 
-        if (chestGirth < 0) {
-            this.chestGirth = DEFAULT_CHEST_GIRTH;
-        } else {
+        if (chestGirth > 0) {
             this.chestGirth = chestGirth;
+        } else {
+            this.chestGirth = DEFAULT_CHEST_GIRTH;
         }
     }
 
     public TorsoArmor(TorsoArmor torsoArmor) {
         super(torsoArmor);
-        if (torsoArmor == null) {
-            this.waistGirth = DEFAULT_WAIST_GIRTH;
-            this.chestGirth = DEFAULT_CHEST_GIRTH;
-        } else {
+        if (torsoArmor != null) {
             this.waistGirth = torsoArmor.waistGirth;
             this.chestGirth = torsoArmor.chestGirth;
+        } else {
+            this.waistGirth = DEFAULT_WAIST_GIRTH;
+            this.chestGirth = DEFAULT_CHEST_GIRTH;
         }
     }
 
@@ -80,6 +80,11 @@ public class TorsoArmor extends ArmorEquipment {
 
     public double getChestGirth() {
         return chestGirth;
+    }
+
+    @Override
+    public TorsoArmor getCopy() {
+        return new TorsoArmor(this);
     }
 
     @Override

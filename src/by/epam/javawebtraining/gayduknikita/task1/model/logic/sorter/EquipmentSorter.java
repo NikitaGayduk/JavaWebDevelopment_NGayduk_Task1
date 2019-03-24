@@ -6,29 +6,28 @@
 
 package by.epam.javawebtraining.gayduknikita.task1.model.logic.sorter;
 
+import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseBag;
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
-import by.epam.javawebtraining.gayduknikita.task1.model.logic.collection.Collection;
-import by.epam.javawebtraining.gayduknikita.task1.model.logic.comparator.BaseParameterComparator;
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.comparator.ParameterComparator;
 
-public class EquipmentSorter {
+public class EquipmentSorter implements Sorter {
 
-    public static void sortByType(Collection collection, Class<? extends BaseEquipment> type) {
-        if (collection.getSize() < 2) {
+    public void sortByType(BaseBag container, Class<? extends BaseEquipment> type) {
+        if (container.getSize() < 2) {
             return;
         }
 
-        int uncheckedPtr = 1;
-        for (int firstPtr = 0; firstPtr < collection.getSize() - 1 && uncheckedPtr < collection.getSize(); firstPtr++) {
+        for (int firstPtr = 0,uncheckedPtr = 1; firstPtr < container.getSize() - 1 && uncheckedPtr < container.getSize(); firstPtr++) {
 
-            if (collection.get(firstPtr) == null || collection.get(firstPtr).getClass() != type) {
+            if (container.get(firstPtr) == null || container.get(firstPtr).getClass() != type) {
 
-                while (uncheckedPtr < collection.getSize()) {
-                    if (collection.get(uncheckedPtr) != null
-                            && type.isAssignableFrom(collection.get(uncheckedPtr).getClass())) {
+                while (uncheckedPtr < container.getSize()) {
+                    if (container.get(uncheckedPtr) != null
+                            && type.isAssignableFrom(container.get(uncheckedPtr).getClass())) {
 
-                        BaseEquipment tmp = collection.get(uncheckedPtr);
-                        collection.addOn(uncheckedPtr, collection.get(firstPtr));
-                        collection.addOn(firstPtr, tmp);
+                        BaseEquipment tmp = container.get(uncheckedPtr);
+                        container.addOn(uncheckedPtr, container.get(firstPtr));
+                        container.addOn(firstPtr, tmp);
                         uncheckedPtr++;
                         break;
                     }
@@ -38,20 +37,20 @@ public class EquipmentSorter {
         }
     }
 
-    public static void sortByParameter(Collection collection, BaseParameterComparator comparator) {
-        sortByType(collection, comparator.returnComparedClasses());
-        for (int firstPtr = 0; firstPtr < collection.getSize()
-                && comparator.returnComparedClasses().isAssignableFrom(collection.get(firstPtr).getClass())
+    public void sortByParameter(BaseBag container, ParameterComparator comparator) {
+        sortByType(container, comparator.returnComparedClasses());
+        for (int firstPtr = 0; firstPtr < container.getSize()
+                && comparator.returnComparedClasses().isAssignableFrom(container.get(firstPtr).getClass())
                 ; firstPtr++) {
 
-            for (int secondPtr = firstPtr + 1; secondPtr < collection.getSize()
-                    && comparator.returnComparedClasses().isAssignableFrom(collection.get(secondPtr).getClass())
+            for (int secondPtr = firstPtr + 1; secondPtr < container.getSize()
+                    && comparator.returnComparedClasses().isAssignableFrom(container.get(secondPtr).getClass())
                     ; secondPtr++) {
 
-                if (comparator.compare(collection.get(firstPtr), collection.get(secondPtr)) < 0) {
-                    BaseEquipment tmp = collection.get(secondPtr);
-                    collection.addOn(secondPtr, collection.get(firstPtr));
-                    collection.addOn(firstPtr, tmp);
+                if (comparator.compare(container.get(firstPtr), container.get(secondPtr)) < 0) {
+                    BaseEquipment tmp = container.get(secondPtr);
+                    container.addOn(secondPtr, container.get(firstPtr));
+                    container.addOn(firstPtr, tmp);
                 }
 
             }

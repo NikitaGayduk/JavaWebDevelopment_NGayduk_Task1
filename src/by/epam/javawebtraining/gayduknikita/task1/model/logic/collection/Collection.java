@@ -7,7 +7,6 @@
 package by.epam.javawebtraining.gayduknikita.task1.model.logic.collection;
 
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
-import by.epam.javawebtraining.gayduknikita.task1.model.logic.exception.logicalexception.illegalparameterexception.IllegalCollectionIndexException;
 
 /**
  * The Collection class is a basic
@@ -28,4 +27,9 @@ public interface Collection {
 
     boolean remove(int index);
 
+    boolean equals(Object o);
+
+    int hashCode();
+
+    String toString();
 }

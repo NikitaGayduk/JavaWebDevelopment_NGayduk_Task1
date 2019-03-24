@@ -18,7 +18,7 @@ import java.util.Objects;
 
 public class ArmorEquipment extends BaseEquipment {
 
-    public static final  int DEFAULT_ARMOR = 300;
+    private static final  int DEFAULT_ARMOR = 300;
 
     private int armorValue;
 
@@ -31,19 +31,19 @@ public class ArmorEquipment extends BaseEquipment {
 
     public ArmorEquipment(int cost, WearDegree state, int armorValue) {
         super(cost, state);
-        if(armorValue < 0){
-            this.armorValue = DEFAULT_ARMOR;
-        } else {
+        if(armorValue > 0){
             this.armorValue = armorValue;
+        } else {
+            this.armorValue = DEFAULT_ARMOR;
         }
     }
 
     public ArmorEquipment(ArmorEquipment equip) {
         super(equip);
-        if (equip == null) {
-            this.armorValue = DEFAULT_ARMOR;
-        } else {
+        if (equip != null) {
             this.armorValue = equip.armorValue;
+        } else {
+            this.armorValue = DEFAULT_ARMOR;
         }
     }
 
@@ -61,10 +61,21 @@ public class ArmorEquipment extends BaseEquipment {
     }
 
     @Override
+    public ArmorEquipment getCopy() {
+        return new ArmorEquipment(this);
+    }
+
+    @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        if (!super.equals(o)) {
+            return false;
+        }
         ArmorEquipment that = (ArmorEquipment) o;
         return armorValue == that.armorValue;
     }

@@ -18,7 +18,7 @@ import java.util.Objects;
 
 public class CuttingWeapon extends WeaponEquipment {
 
-    public static final  int DEFAULT_CUTTING_DAMAGE = 30;
+    private static final  int DEFAULT_CUTTING_DAMAGE = 30;
 
     private int cuttingDamage;
 
@@ -30,23 +30,21 @@ public class CuttingWeapon extends WeaponEquipment {
 
     public CuttingWeapon(int cost, WearDegree state, int damage, int cuttingDamage) {
         super(cost, state, damage);
-        if (cuttingDamage < 0){
-            this.cuttingDamage = DEFAULT_CUTTING_DAMAGE;
-        } else {
+        if (cuttingDamage > 0){
             this.cuttingDamage = cuttingDamage;
+        } else {
+            this.cuttingDamage = DEFAULT_CUTTING_DAMAGE;
         }
     }
 
     public CuttingWeapon(CuttingWeapon equip) {
         super(equip);
-        if (equip == null){
-            this.cuttingDamage = DEFAULT_CUTTING_DAMAGE;
-        } else {
+        if (equip != null){
             this.cuttingDamage = equip.cuttingDamage;
+        } else {
+            this.cuttingDamage = DEFAULT_CUTTING_DAMAGE;
         }
     }
-
-
 
     public void setCuttingDamage(int cuttingDamage) throws IllegalCuttingDamageException {
         if(cuttingDamage < 0){
@@ -57,6 +55,11 @@ public class CuttingWeapon extends WeaponEquipment {
 
     public int getCuttingDamage() {
         return cuttingDamage;
+    }
+
+    @Override
+    public CuttingWeapon getCopy() {
+        return new CuttingWeapon(this);
     }
 
     @Override

@@ -2,7 +2,7 @@ package by.epam.javawebtraining.gayduknikita.task1.model.logic.comparator;
 
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.ArmorEquipment;
 
-public class ArmorValueComparator implements BaseParameterComparator<ArmorEquipment> {
+public class ArmorValueComparator implements ParameterComparator<ArmorEquipment> {
     @Override
     public Class<ArmorEquipment> returnComparedClasses() {
         return ArmorEquipment.class;
@@ -11,6 +11,7 @@ public class ArmorValueComparator implements BaseParameterComparator<ArmorEquipm
     @Override
     public int compare(ArmorEquipment equip1, ArmorEquipment equip2) {
         int result;
+
         if (equip1 == null && equip2 == null) {
             result = 0;
         } else if (equip1 == null) {

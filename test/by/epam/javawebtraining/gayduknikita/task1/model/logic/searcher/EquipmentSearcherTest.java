@@ -15,6 +15,7 @@ public class EquipmentSearcherTest {
     private static EquipmentSearcher searcher = new EquipmentSearcher();
     private static AbstractSearchBehavior behavior = new ArmorSearchBehavior();
     private static Collection collection = new ArrayCollection(7);
+    private static BaseBag bag = new BaseBag(collection);
     private static BaseEquipment[] searchByTypeResult = new BaseEquipment[4];
     private static BaseEquipment[] searchByArmorResult = new BaseEquipment[3];
 
@@ -65,12 +66,12 @@ public class EquipmentSearcherTest {
 
     @Test
     public void searchByTypeTest() {
-        assertArrayEquals(searchByTypeResult,searcher.equipmentTypeSearch(collection,ArmorEquipment.class));
+        assertArrayEquals(searchByTypeResult,searcher.equipmentTypeSearch(bag,ArmorEquipment.class));
     }
 
 
     @Test
     public void searchByArmorValueTest() throws IllegalRangeException {
-        assertArrayEquals(searchByArmorResult,searcher.parameterSearch(behavior,collection,200,300));
+        assertArrayEquals(searchByArmorResult,searcher.parameterSearch(behavior,bag,200,300));
     }
 }

@@ -4,7 +4,7 @@ import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
 
 import java.util.Comparator;
 
-public interface BaseParameterComparator<T extends BaseEquipment> extends Comparator <T> {
+public interface ParameterComparator<T extends BaseEquipment> extends Comparator <T> {
     Class<T> returnComparedClasses();
 
     @Override

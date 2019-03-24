@@ -1,4 +1,4 @@
-package by.epam.javawebtraining.gayduknikita.task1.util.equipcreator;
+package by.epam.javawebtraining.gayduknikita.task1.util.creator.equipmentcreator;
 
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
 

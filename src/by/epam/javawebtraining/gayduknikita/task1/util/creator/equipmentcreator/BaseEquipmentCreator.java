@@ -4,20 +4,20 @@
  *GaydukNikita
  */
 
-package by.epam.javawebtraining.gayduknikita.task1.util.equipcreator;
+package by.epam.javawebtraining.gayduknikita.task1.util.creator.equipmentcreator;
 
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
 
-import static by.epam.javawebtraining.gayduknikita.task1.util.equipcreator.EquipParamRandomizer.*;
+import static by.epam.javawebtraining.gayduknikita.task1.util.creator.equipmentcreator.EquipParamRandomizer.*;
 
 
 /**
- * The BaseEquipmentCreator class is a equipcreator
- * class for BaseEquipment. Implements equipcreator
+ * The BaseEquipmentCreator class is a equipmentcreator
+ * class for BaseEquipment. Implements equipmentcreator
  * interface
  */
 
-public class BaseEquipmentCreator implements Creator {
+public class BaseEquipmentCreator implements EquipmentCreator {
 
     @Override
     public BaseEquipment factoryMethod(){

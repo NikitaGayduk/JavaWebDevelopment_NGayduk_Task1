@@ -9,6 +9,9 @@ package by.epam.javawebtraining.gayduknikita.task1.model.logic.collection;
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
 import by.epam.javawebtraining.gayduknikita.task1.model.logic.exception.logicalexception.illegalparameterexception.IllegalCollectionIndexException;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 /**
  * The ArrayCollection class is a bicycle
  * class that shows my knowledge about static arrays.
@@ -57,16 +60,16 @@ public class ArrayCollection implements Collection {
 
     @Override
     public boolean addOn(int index, BaseEquipment equip) {
-        if (index < 0 || index >= equipArray.length){
+        if (index < 0 || index >= equipArray.length) {
             return false;
         }
-            equipArray[index] = equip;
-            return true;
+        equipArray[index] = equip;
+        return true;
     }
 
     @Override
     public BaseEquipment get(int index) {
-            return equipArray[index];
+        return equipArray[index];
     }
 
     @Override
@@ -81,14 +84,50 @@ public class ArrayCollection implements Collection {
 
     @Override
     public boolean remove(int index) {
-        if (index < 0 || index >= equipArray.length || equipArray[index] == null){
+        if (index < 0 || index >= equipArray.length || equipArray[index] == null) {
             return false;
         }
-            /*
-             * Replace deleted value by last value
-             */
-            equipArray[index] = equipArray[ptr - 1];
-            equipArray[ptr - 1] = null;
+        /*
+         * Replace deleted value by last value
+         */
+        equipArray[index] = equipArray[ptr - 1];
+        equipArray[ptr - 1] = null;
+        return true;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
             return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ArrayCollection that = (ArrayCollection) o;
+
+        if (this.getSize() != that.getSize()) {
+            return false;
+        }
+
+        for (int ptr = 0; ptr < equipArray.length; ptr++) {
+            if (!this.get(ptr).equals(that.get(ptr))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(equipArray);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        for (int ptr = 0; ptr < equipArray.length; ptr++) {
+            result.append(equipArray[ptr].toString() + "\n");
+        }
+        return result.toString();
     }
 }

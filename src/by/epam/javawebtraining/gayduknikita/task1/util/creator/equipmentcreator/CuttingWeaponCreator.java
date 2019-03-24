@@ -4,20 +4,20 @@
  *GaydukNikita
  */
 
-package by.epam.javawebtraining.gayduknikita.task1.util.equipcreator;
+package by.epam.javawebtraining.gayduknikita.task1.util.creator.equipmentcreator;
 
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.CuttingWeapon;
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
 
-import static by.epam.javawebtraining.gayduknikita.task1.util.equipcreator.EquipParamRandomizer.*;
+import static by.epam.javawebtraining.gayduknikita.task1.util.creator.equipmentcreator.EquipParamRandomizer.*;
 
 /**
- * The TorsoArmorCreator class is a equipcreator
- * class for TorsoArmor. Implements equipcreator
+ * The TorsoArmorCreator class is a equipmentcreator
+ * class for TorsoArmor. Implements equipmentcreator
  * interface
  */
 
-public class CuttingWeaponCreator implements Creator {
+public class CuttingWeaponCreator implements EquipmentCreator {
 
     @Override
     public BaseEquipment factoryMethod() {

@@ -12,7 +12,7 @@ import java.util.Objects;
 
 public class WeaponEquipment extends BaseEquipment {
 
-    public static final  int DEFAULT_DAMAGE = 200;
+    private static final  int DEFAULT_DAMAGE = 200;
 
     private int damageValue;
 
@@ -25,19 +25,19 @@ public class WeaponEquipment extends BaseEquipment {
 
     public WeaponEquipment(int cost, WearDegree state, int damageValue) {
         super(cost, state);
-        if (damageValue < 0) {
-            this.damageValue = DEFAULT_DAMAGE;
-        } else {
+        if (damageValue > 0) {
             this.damageValue = damageValue;
+        } else {
+            this.damageValue = DEFAULT_DAMAGE;
         }
     }
 
     public WeaponEquipment(WeaponEquipment equip) {
         super(equip);
-        if (equip == null) {
-            this.damageValue = DEFAULT_DAMAGE;
-        } else {
+        if (equip != null) {
             this.damageValue = equip.damageValue;
+        } else {
+            this.damageValue = DEFAULT_DAMAGE;
         }
     }
 
@@ -55,10 +55,21 @@ public class WeaponEquipment extends BaseEquipment {
     }
 
     @Override
+    public WeaponEquipment getCopy() {
+        return new WeaponEquipment(this);
+    }
+
+    @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        if (!super.equals(o)) {
+            return false;
+        }
         WeaponEquipment that = (WeaponEquipment) o;
         return damageValue == that.damageValue;
     }

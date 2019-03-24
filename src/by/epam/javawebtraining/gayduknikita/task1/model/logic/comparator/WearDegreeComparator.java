@@ -2,8 +2,8 @@ package by.epam.javawebtraining.gayduknikita.task1.model.logic.comparator;
 
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
 
-public class WearDegreeComparator implements BaseParameterComparator<BaseEquipment> {
-
+public class WearDegreeComparator implements ParameterComparator<BaseEquipment> {
+    @Override
     public Class<BaseEquipment> returnComparedClasses() {
         return BaseEquipment.class;
     }

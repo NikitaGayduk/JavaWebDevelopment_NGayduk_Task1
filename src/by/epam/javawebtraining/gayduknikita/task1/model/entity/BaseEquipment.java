@@ -9,10 +9,10 @@ import java.util.Objects;
  * class for all knight equipment
  */
 
-public class BaseEquipment implements Comparable<BaseEquipment> {
+public class BaseEquipment implements Comparable<BaseEquipment>{
 
-    public static final int DEFAULT_PRICE = 200;
-    public static final WearDegree DEFAULT_STATE = WearDegree.UNBROKEN;
+    private static final int DEFAULT_PRICE = 200;
+    private static final WearDegree DEFAULT_STATE = WearDegree.UNBROKEN;
 
     private int price;
     private WearDegree equipmentState;
@@ -32,21 +32,21 @@ public class BaseEquipment implements Comparable<BaseEquipment> {
     }
 
     public BaseEquipment(int price, WearDegree equipmentState) {
-        if (price < 0) {
-            this.price = DEFAULT_PRICE;
-        } else {
+        if (price > 0) {
             this.price = price;
+        } else {
+            this.price = DEFAULT_PRICE;
         }
         this.equipmentState = equipmentState;
     }
 
     public BaseEquipment(BaseEquipment equip) {
-        if (equip == null) {
-            this.price = DEFAULT_PRICE;
-            this.equipmentState = DEFAULT_STATE;
-        } else {
+        if (equip != null) {
             this.price = equip.price;
             this.equipmentState = equip.equipmentState;
+        } else {
+            this.price = DEFAULT_PRICE;
+            this.equipmentState = DEFAULT_STATE;
         }
     }
 
@@ -71,10 +71,18 @@ public class BaseEquipment implements Comparable<BaseEquipment> {
         return equipmentState;
     }
 
+    public BaseEquipment getCopy(){
+        return new BaseEquipment(this);
+    }
+
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         BaseEquipment that = (BaseEquipment) o;
         return price == that.price &&
                 equipmentState == that.equipmentState;
