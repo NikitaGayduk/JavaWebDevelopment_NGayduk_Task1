@@ -24,6 +24,6 @@ public class ArmorSearchBehavior extends AbstractSearchBehavior {
             }
         }
 
-        return result.toArray(new BaseEquipment[result.size()]);
+        return result.toArray(new BaseEquipment[0]);
     }
 }

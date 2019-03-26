@@ -18,14 +18,14 @@ public abstract class AbstractSearchBehavior {
             }
         }
 
-        return result.toArray(new BaseEquipment[result.size()]);
-    }
-
-    void validateMinMax(int min,int max) throws IllegalRangeException{
-        if (min < 0 || min > max || max < 0) {
-            throw new IllegalRangeException();
-        }
+        return result.toArray(new BaseEquipment[0]);
     }
 
     public abstract BaseEquipment[] searchByParameterValue(BaseBag container, int min, int max) throws IllegalRangeException;
+
+    void validateMinMax(int min,int max) throws IllegalRangeException{
+        if (min < 0 || min > max) {
+            throw new IllegalRangeException();
+        }
+    }
 }

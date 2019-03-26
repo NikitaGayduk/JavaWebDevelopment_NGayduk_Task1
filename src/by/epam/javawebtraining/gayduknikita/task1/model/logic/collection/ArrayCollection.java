@@ -22,30 +22,34 @@ public class ArrayCollection implements Collection {
 
     private static int DEFAULT_SIZE = 10;
 
-    private int ptr;
+    private int ptr = 0;
 
 
-    BaseEquipment[] equipArray;
-
-    {
-        ptr = 0;
-    }
-
+    private BaseEquipment[] equipArray;
 
     public ArrayCollection() {
         equipArray = new BaseEquipment[DEFAULT_SIZE];
     }
 
     public ArrayCollection(int size) {
-        if (size < 0) {
-            size = DEFAULT_SIZE;
+        if (size > 0) {
+            equipArray = new BaseEquipment[size];
+        } else {
+            equipArray = new BaseEquipment[DEFAULT_SIZE];
         }
-        equipArray = new BaseEquipment[size];
     }
 
 
     int getPtr() {
         return ptr;
+    }
+
+    boolean setEquipArray(BaseEquipment[] equipArray) {
+        if (equipArray.length > this.equipArray.length) {
+            this.equipArray = equipArray;
+            return true;
+        }
+        return false;
     }
 
     @Override

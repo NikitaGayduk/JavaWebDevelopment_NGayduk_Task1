@@ -11,13 +11,6 @@ public class BaseEquipmentTest {
     private BaseEquipment equip1;
     private BaseEquipment equip2;
 
-    @After
-    public void clearData(){
-        equip = null;
-        equip1 = null;
-        equip2 = null;
-    }
-
     @Test
     public void parameterizedConstructorTest(){
         equip = new BaseEquipment(10, BaseEquipment.WearDegree.UNBROKEN);

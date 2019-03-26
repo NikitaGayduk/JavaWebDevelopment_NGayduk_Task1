@@ -54,11 +54,4 @@ public class ArmorValueComparatorTest {
     public void compareTest() {
         assertEquals(result, comparator.compare(equip1, equip2));
     }
-
-    @Test
-    public void returnComparedClassesTest() {
-        assertEquals(ArmorEquipment.class, comparator.returnComparedClasses());
-    }
-
-
 }

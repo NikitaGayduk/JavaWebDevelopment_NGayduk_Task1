@@ -2,15 +2,14 @@ package by.epam.javawebtraining.gayduknikita.task1.model.logic.comparator;
 
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
 
-public class WearDegreeComparator implements ParameterComparator<BaseEquipment> {
-    @Override
-    public Class<BaseEquipment> returnComparedClasses() {
-        return BaseEquipment.class;
-    }
+import java.util.Comparator;
+
+public class WearDegreeComparator implements Comparator<BaseEquipment> {
 
     @Override
     public int compare(BaseEquipment equip1, BaseEquipment equip2) {
         int result;
+
         if (equip1 == null && equip2 == null) {
             result = 0;
         } else if (equip1 == null) {

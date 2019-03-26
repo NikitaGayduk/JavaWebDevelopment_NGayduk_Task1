@@ -2,7 +2,7 @@ package by.epam.javawebtraining.gayduknikita.task1.model.logic.calculator.calcul
 
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseBag;
 
-public class CostCalculateBehavior implements CalculateBehavior {
+public class PriceCalculateBehavior implements CalculateBehavior {
 
     public int calculate(BaseBag container) {
         int summaryCost = 0;

@@ -6,6 +6,8 @@ import by.epam.javawebtraining.gayduknikita.task1.model.entity.WeaponEquipment;
 import static by.epam.javawebtraining.gayduknikita.task1.util.creator.equipmentcreator.EquipParamRandomizer.*;
 
 public class WeaponCreator implements EquipmentCreator {
+    private static final int PRICE = 1000;
+    private static final int DAMAGE = 300;
 
     @Override
     public BaseEquipment factoryMethod() {
@@ -14,6 +16,6 @@ public class WeaponCreator implements EquipmentCreator {
 
     @Override
     public BaseEquipment factoryMethodRandomFill() {
-        return new WeaponEquipment(getRandInt(1000), getRandWearDegree(), getRandInt(300));
+        return new WeaponEquipment(getRandInt(PRICE), getRandWearDegree(), getRandInt(DAMAGE));
     }
 }

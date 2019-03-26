@@ -12,15 +12,15 @@ public class PriceSearchBehavior extends AbstractSearchBehavior {
     public BaseEquipment[] searchByParameterValue(BaseBag container, int min, int max) throws IllegalRangeException {
         validateMinMax(min,max);
 
-        ArrayList<BaseEquipment> result = new ArrayList<>(container.getSize());
+        BaseEquipment[] result = new BaseEquipment[container.getSize()];
 
         for (int ptr = 0; ptr < container.getSize(); ptr++) {
             if (container.get(ptr).getPrice() >= min
                     && container.get(ptr).getPrice() <= max) {
-                result.add(container.get(ptr));
+                result[ptr] = container.get(ptr);
             }
         }
 
-        return result.toArray(new BaseEquipment[result.size()]);
+        return result;
     }
 }

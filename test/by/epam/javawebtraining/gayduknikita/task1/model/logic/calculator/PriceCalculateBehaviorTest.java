@@ -3,16 +3,16 @@ package by.epam.javawebtraining.gayduknikita.task1.model.logic.calculator;
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.ArmorEquipment;
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseBag;
 import by.epam.javawebtraining.gayduknikita.task1.model.entity.BaseEquipment;
-import by.epam.javawebtraining.gayduknikita.task1.model.logic.calculator.calculatebehavior.CostCalculateBehavior;
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.calculator.calculatebehavior.PriceCalculateBehavior;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 
-public class CostCalculateBehaviorTest {
+public class PriceCalculateBehaviorTest {
     private BaseBag container = new BaseBag();
-    private CostCalculateBehavior costCalculator = new CostCalculateBehavior();
+    private PriceCalculateBehavior costCalculator = new PriceCalculateBehavior();
 
     @Before
     public void setData() {

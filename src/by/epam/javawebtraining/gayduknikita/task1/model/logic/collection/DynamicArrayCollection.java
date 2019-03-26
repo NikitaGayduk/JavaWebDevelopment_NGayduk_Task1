@@ -30,7 +30,7 @@ public class DynamicArrayCollection extends ArrayCollection {
 
     @Override
     public boolean add(BaseEquipment equip) {
-        if (this.getPtr() >= equipArray.length) {
+        if (this.getPtr() >= getSize()) {
             resize();
         }
         return super.add(equip);
@@ -39,20 +39,20 @@ public class DynamicArrayCollection extends ArrayCollection {
     private void resize() {
         BaseEquipment[] equipArrayTmp = new BaseEquipment[generateNewSize()];
 
-        for (int ptr = 0; ptr < this.equipArray.length; ptr++) {
+        for (int ptr = 0; ptr < getSize(); ptr++) {
             equipArrayTmp[ptr] = this.get(ptr);
         }
 
-        this.equipArray = equipArrayTmp;
+        setEquipArray(equipArrayTmp);
     }
 
     private int generateNewSize(){
         int newSize;
 
-        if (this.equipArray.length < DEFAULT_SIZE) {
+        if (getSize() < DEFAULT_SIZE) {
             newSize = DEFAULT_NEW_SIZE;
         } else {
-            newSize = (int) (this.equipArray.length * DEFAULT_RESIZE_FACTOR);
+            newSize = (int) (getSize() * DEFAULT_RESIZE_FACTOR);
         }
         return newSize;
     }

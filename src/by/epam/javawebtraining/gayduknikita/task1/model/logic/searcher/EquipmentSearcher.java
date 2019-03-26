@@ -9,7 +9,7 @@ import by.epam.javawebtraining.gayduknikita.task1.model.logic.searcher.searchbeh
 
 
 public class EquipmentSearcher implements Searcher {
-    private static AbstractSearchBehavior behavior;
+    private AbstractSearchBehavior behavior;
 
 
     public EquipmentSearcher() {
@@ -20,21 +20,18 @@ public class EquipmentSearcher implements Searcher {
         this.behavior = behavior;
     }
 
-    public void setBehavior(AbstractSearchBehavior behavior){
-        this.behavior = behavior;
-    }
 
-
-    public BaseEquipment[] equipmentTypeSearch(BaseBag container, Class type) {
+    public BaseEquipment[] equipmentTypeSearch(BaseBag container, Class<? extends BaseEquipment> type) {
         return behavior.searchByType(container, type);
     }
 
-    public BaseEquipment[] parameterSearch(AbstractSearchBehavior behavior, BaseBag container
+    public BaseEquipment[] parameterSearch(BaseBag container
             , int min, int max) throws IllegalRangeException {
-        setBehavior(behavior);
-        return behavior.searchByParameterValue(container,min,max);
+        return behavior.searchByParameterValue(container, min, max);
     }
 
-
+    public void setBehavior(AbstractSearchBehavior behavior) {
+        this.behavior = behavior;
+    }
 }
 

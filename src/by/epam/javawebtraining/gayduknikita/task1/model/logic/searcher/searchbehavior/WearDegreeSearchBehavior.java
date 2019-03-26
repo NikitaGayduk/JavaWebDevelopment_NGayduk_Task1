@@ -10,7 +10,7 @@ public class WearDegreeSearchBehavior extends AbstractSearchBehavior {
 
     @Override
     void validateMinMax(int min, int max) throws IllegalRangeException {
-        if (min < 0 || min > max || max < 0 || max - 1 > BaseEquipment.WearDegree.values().length) {
+        if (min < 0 || min > max || max - 1 > BaseEquipment.WearDegree.values().length) {
             throw new IllegalRangeException();
         }
     }
@@ -27,7 +27,7 @@ public class WearDegreeSearchBehavior extends AbstractSearchBehavior {
             }
         }
 
-        return result.toArray(new BaseEquipment[result.size()]);
+        return result.toArray(new BaseEquipment[0]);
 
     }
 }

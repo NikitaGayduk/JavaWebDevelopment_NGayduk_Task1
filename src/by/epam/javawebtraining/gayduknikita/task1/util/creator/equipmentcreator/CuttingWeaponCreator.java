@@ -18,6 +18,9 @@ import static by.epam.javawebtraining.gayduknikita.task1.util.creator.equipmentc
  */
 
 public class CuttingWeaponCreator implements EquipmentCreator {
+    private static final int PRICE = 1000;
+    private static final int DAMAGE = 300;
+    private static final int CUTTING_DAMAGE = 300;
 
     @Override
     public BaseEquipment factoryMethod() {
@@ -26,7 +29,7 @@ public class CuttingWeaponCreator implements EquipmentCreator {
 
     @Override
     public BaseEquipment factoryMethodRandomFill() {
-        return new CuttingWeapon(getRandInt(600), getRandWearDegree(),getRandInt(300),getRandInt(200));
+        return new CuttingWeapon(getRandInt(PRICE), getRandWearDegree(),getRandInt(DAMAGE),getRandInt(CUTTING_DAMAGE));
     }
 
 }

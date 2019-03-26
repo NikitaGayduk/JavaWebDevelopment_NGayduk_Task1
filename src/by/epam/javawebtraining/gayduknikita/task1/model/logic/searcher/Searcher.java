@@ -9,8 +9,8 @@ public interface Searcher {
 
     void setBehavior(AbstractSearchBehavior behavior);
 
-    BaseEquipment[] equipmentTypeSearch(BaseBag container, Class type);
+    BaseEquipment[] equipmentTypeSearch(BaseBag container, Class<? extends BaseEquipment> type);
 
-    BaseEquipment[] parameterSearch(AbstractSearchBehavior behavior, BaseBag container
+    BaseEquipment[] parameterSearch(BaseBag container
             , int min, int max) throws IllegalRangeException;
 }

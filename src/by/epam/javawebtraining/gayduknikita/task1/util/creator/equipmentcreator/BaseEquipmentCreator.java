@@ -18,6 +18,7 @@ import static by.epam.javawebtraining.gayduknikita.task1.util.creator.equipmentc
  */
 
 public class BaseEquipmentCreator implements EquipmentCreator {
+    private static final int PRICE = 1000;
 
     @Override
     public BaseEquipment factoryMethod(){
@@ -27,6 +28,6 @@ public class BaseEquipmentCreator implements EquipmentCreator {
     @Override
     public BaseEquipment factoryMethodRandomFill() {
 
-        return new BaseEquipment(getRandInt(1000), getRandWearDegree());
+        return new BaseEquipment(getRandInt(PRICE), getRandWearDegree());
     }
 }

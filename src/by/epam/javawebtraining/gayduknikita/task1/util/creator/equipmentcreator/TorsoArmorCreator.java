@@ -18,6 +18,10 @@ import static by.epam.javawebtraining.gayduknikita.task1.util.creator.equipmentc
  */
 
 public class TorsoArmorCreator implements EquipmentCreator {
+    private static final int PRICE = 1000;
+    private static final int ARMOR = 500;
+    private static final int WAIST_GIRTH = 80;
+    private static final int CHEST_GIRTH = 110;
 
     @Override
     public BaseEquipment factoryMethod() {
@@ -26,7 +30,7 @@ public class TorsoArmorCreator implements EquipmentCreator {
 
     @Override
     public BaseEquipment factoryMethodRandomFill() {
-        return new TorsoArmor(getRandInt(600), getRandWearDegree(),getRandInt(300), getRandDouble(100),getRandDouble(90));
+        return new TorsoArmor(getRandInt(PRICE), getRandWearDegree(),getRandInt(ARMOR), getRandDouble(WAIST_GIRTH),getRandDouble(CHEST_GIRTH));
     }
 
 }

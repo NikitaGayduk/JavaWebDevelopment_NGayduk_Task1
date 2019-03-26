@@ -14,10 +14,8 @@ public class ArrayCollectionTest {
     private BaseEquipment equip3 = new BaseEquipment(30, BaseEquipment.WearDegree.UNBROKEN);
 
     @Before
-    public void setEquipArrayWithNull() {
-        equipArray.addOn(0, null);
-        equipArray.addOn(1, null);
-        equipArray.addOn(2, null);
+    public void setEquipArray() {
+        equipArray = new ArrayCollection(3);
     }
 
     @Test

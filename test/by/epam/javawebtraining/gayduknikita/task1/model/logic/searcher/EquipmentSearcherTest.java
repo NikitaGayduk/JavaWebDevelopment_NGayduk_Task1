@@ -72,6 +72,7 @@ public class EquipmentSearcherTest {
 
     @Test
     public void searchByArmorValueTest() throws IllegalRangeException {
-        assertArrayEquals(searchByArmorResult,searcher.parameterSearch(behavior,bag,200,300));
+        searcher.setBehavior(behavior);
+        assertArrayEquals(searchByArmorResult,searcher.parameterSearch(bag,200,300));
     }
 }
