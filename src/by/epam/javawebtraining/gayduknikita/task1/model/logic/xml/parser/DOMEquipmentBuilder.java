@@ -131,7 +131,6 @@ public class DOMEquipmentBuilder {
     private static String getElementTextContent(Element element, String elementName) {
         NodeList nList = element.getElementsByTagName(elementName);
         Node node = nList.item(0);
-        String text = node.getTextContent();
-        return text;
+        return node.getTextContent();
     }
 }
