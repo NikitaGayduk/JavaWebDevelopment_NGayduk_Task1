@@ -46,9 +46,9 @@ public class CuttingWeapon extends WeaponEquipment {
         }
     }
 
-    public void setCuttingDamage(int cuttingDamage) throws IllegalCuttingDamageException {
+    public void setCuttingDamage(int cuttingDamage) {
         if(cuttingDamage < 0){
-            throw new IllegalCuttingDamageException();
+            this.cuttingDamage = DEFAULT_CUTTING_DAMAGE;
         }
         this.cuttingDamage = cuttingDamage;
     }

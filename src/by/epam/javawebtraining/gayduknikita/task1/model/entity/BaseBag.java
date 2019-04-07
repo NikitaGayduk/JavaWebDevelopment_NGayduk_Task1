@@ -4,6 +4,7 @@ import by.epam.javawebtraining.gayduknikita.task1.model.logic.collection.ArrayCo
 import by.epam.javawebtraining.gayduknikita.task1.model.logic.collection.Collection;
 
 public class BaseBag {
+
     private Collection collection;
 
     public BaseBag() {

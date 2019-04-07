@@ -30,7 +30,7 @@ public class ArmorEquipment extends BaseEquipment {
     }
 
     public ArmorEquipment(int cost, WearDegree state, int armorValue) {
-        super(cost, state);
+        super(cost,state);
         if(armorValue > 0){
             this.armorValue = armorValue;
         } else {
@@ -49,9 +49,9 @@ public class ArmorEquipment extends BaseEquipment {
 
 
 
-    public void setArmorValue(int armorValue) throws IllegalArmorValueException {
+    public void setArmorValue(int armorValue) {
         if (armorValue < 0){
-            throw new IllegalArmorValueException();
+            this.armorValue = DEFAULT_ARMOR;
         }
         this.armorValue = armorValue;
     }

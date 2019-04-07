@@ -60,9 +60,9 @@ public class TorsoArmor extends ArmorEquipment {
 
 
 
-    public void setWaistGirth(double waistGirth) throws IllegalWaistGirthException {
+    public void setWaistGirth(double waistGirth) {
         if (waistGirth < 0) {
-            throw new IllegalWaistGirthException();
+            this.waistGirth = DEFAULT_WAIST_GIRTH;
         }
         this.waistGirth = waistGirth;
     }
@@ -71,9 +71,9 @@ public class TorsoArmor extends ArmorEquipment {
         return waistGirth;
     }
 
-    public void setChestGirth(double chestGirth) throws IllegalChestGirthException {
+    public void setChestGirth(double chestGirth) {
         if (chestGirth < 0) {
-            throw new IllegalChestGirthException();
+            this.chestGirth = DEFAULT_CHEST_GIRTH;
         }
         this.chestGirth = chestGirth;
     }

@@ -83,7 +83,7 @@ public class ArrayCollection implements Collection {
 
     @Override
     public int getSize() {
-        return equipArray.length;
+        return ptr;
     }
 
     @Override
@@ -129,8 +129,13 @@ public class ArrayCollection implements Collection {
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
-        for (int ptr = 0; ptr < equipArray.length; ptr++) {
-            result.append(equipArray[ptr].toString() + "\n");
+
+        for (int ptr = 0; ptr < getSize(); ptr++) {
+            if (equipArray[ptr] != null) {
+                result.append(equipArray[ptr].toString() + "\n");
+            } else {
+                result.append("Empty element\n");
+            }
         }
         return result.toString();
     }

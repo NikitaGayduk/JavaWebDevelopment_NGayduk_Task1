@@ -11,9 +11,12 @@ import java.util.Objects;
 
 public class BaseEquipment implements Comparable<BaseEquipment>{
 
+    private static final int DEFAULT_ID = 0;
     private static final int DEFAULT_PRICE = 200;
     private static final WearDegree DEFAULT_STATE = WearDegree.UNBROKEN;
 
+
+    private int id = DEFAULT_ID;
     private int price;
     private WearDegree equipmentState;
 
@@ -51,9 +54,9 @@ public class BaseEquipment implements Comparable<BaseEquipment>{
     }
 
 
-    public void setPrice(int price) throws IllegalPriceException {
+    public void setPrice(int price){
         if (price < 0) {
-            throw new IllegalPriceException();
+            this.price = DEFAULT_PRICE;
         }
         this.price = price;
     }
@@ -62,6 +65,13 @@ public class BaseEquipment implements Comparable<BaseEquipment>{
         return price;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
 
     public void setEquipmentState(WearDegree equipmentState) {
         this.equipmentState = equipmentState;
@@ -109,7 +119,7 @@ public class BaseEquipment implements Comparable<BaseEquipment>{
 
     @Override
     public String toString() {
-        return "Class name: " + getClass().getSimpleName() + "\n" + "Price: " + price
+        return "Class name: " + getClass().getSimpleName() + " ID: " + id + "\n" + "Price: " + price
                 + ", wear degree: " + equipmentState;
     }
 }

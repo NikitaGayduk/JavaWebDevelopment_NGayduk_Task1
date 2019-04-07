@@ -43,9 +43,9 @@ public class WeaponEquipment extends BaseEquipment {
 
 
 
-    public void setDamageValue(int damageValue) throws IllegalDamageValueException {
+    public void setDamageValue(int damageValue) {
         if (damageValue < 0) {
-            throw new IllegalDamageValueException();
+            this.damageValue = DEFAULT_DAMAGE;
         }
         this.damageValue = damageValue;
     }

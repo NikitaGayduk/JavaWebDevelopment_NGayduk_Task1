@@ -63,7 +63,7 @@ public class ArrayCollectionTest {
 
     @Test
     public void getSizeTest() {
-        assertEquals(3, equipArray.getSize());
+        assertEquals(0, equipArray.getSize());
     }
 
     @Test
