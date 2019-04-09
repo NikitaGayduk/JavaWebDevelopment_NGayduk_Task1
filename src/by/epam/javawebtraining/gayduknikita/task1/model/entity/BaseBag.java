@@ -48,7 +48,14 @@ public class BaseBag {
 
     @Override
     public boolean equals(Object o) {
-        return collection.equals(o);
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        BaseBag that = (BaseBag) o;
+        return collection.equals(that.collection);
     }
 
     @Override

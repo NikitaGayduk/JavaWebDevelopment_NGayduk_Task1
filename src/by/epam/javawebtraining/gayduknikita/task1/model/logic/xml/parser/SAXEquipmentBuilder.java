@@ -14,10 +14,9 @@ import org.xml.sax.helpers.XMLReaderFactory;
  * @author NikitaGayduk
  * @date 07.04.2019
  */
-public class SAXEquipmentBuilder {
+public class SAXEquipmentBuilder extends AbstractEquipmentBuilder {
     private static final Logger LOGGER = Logger.getRootLogger();
 
-    private BaseBag equipmentBag;
     private SAXEquipmentHandler handler;
     private XMLReader reader;
 
@@ -31,10 +30,19 @@ public class SAXEquipmentBuilder {
         }
     }
 
-    public BaseBag getEquipmentBag() {
-        return equipmentBag;
+    public SAXEquipmentBuilder(BaseBag equipmentBag){
+        super(equipmentBag);
+        handler = new SAXEquipmentHandler();
+        try {
+            reader = XMLReaderFactory.createXMLReader();
+            reader.setContentHandler(handler);
+        } catch (SAXException e) {
+            LOGGER.error("Reader in SAXParser creation or defining error. " + e.getMessage());
+        }
     }
 
+
+    @Override
     public void buildEquipmentBag(String xmlName) {
         try {
             reader.parse(xmlName);

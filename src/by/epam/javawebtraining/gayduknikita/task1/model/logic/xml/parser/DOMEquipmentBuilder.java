@@ -19,16 +19,14 @@ import org.xml.sax.SAXException;
  * @date 07.04.2019
  */
 
-public class DOMEquipmentBuilder {
+public class DOMEquipmentBuilder extends AbstractEquipmentBuilder {
     private static final Logger LOGGER = Logger.getRootLogger();
 
-    private BaseBag equipmentBag;
     private DocumentBuilder docBuilder;
 
     public DOMEquipmentBuilder() {
-        this.equipmentBag = new BaseBag();
-
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+
         try {
             docBuilder = factory.newDocumentBuilder();
         } catch (ParserConfigurationException e) {
@@ -36,10 +34,20 @@ public class DOMEquipmentBuilder {
         }
     }
 
-    public BaseBag getEquipmentBag() {
-        return equipmentBag;
+    public DOMEquipmentBuilder(BaseBag equipmentBag){
+        super(equipmentBag);
+
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+
+        try {
+            docBuilder = factory.newDocumentBuilder();
+        } catch (ParserConfigurationException e) {
+            LOGGER.error("DOMParser configuration error. " + e.getMessage());
+        }
+
     }
 
+    @Override
     public void buildEquipmentBag(String xmlName) {
         Document doc = null;
 
@@ -74,19 +82,19 @@ public class DOMEquipmentBuilder {
 
         } else if (EquipmentEnum.ARMOR_EQUIPMENT.getValue().equals(equipmentElement.getTagName())) {
             equipment = new ArmorEquipment();
-            setArmorEquipment(equipment,equipmentElement);
+            setArmorEquipment(equipment, equipmentElement);
 
         } else if (EquipmentEnum.WEAPON_EQUIPMENT.getValue().equals(equipmentElement.getTagName())) {
             equipment = new WeaponEquipment();
-            setWeaponEquipment(equipment,equipmentElement);
+            setWeaponEquipment(equipment, equipmentElement);
 
         } else if (EquipmentEnum.TORSO_ARMOR.getValue().equals(equipmentElement.getTagName())) {
             equipment = new TorsoArmor();
-            setTorsoArmor(equipment,equipmentElement);
+            setTorsoArmor(equipment, equipmentElement);
 
         } else if (EquipmentEnum.CUTTING_WEAPON.getValue().equals(equipmentElement.getTagName())) {
             equipment = new CuttingWeapon();
-            setCuttingWeapon(equipment,equipmentElement);
+            setCuttingWeapon(equipment, equipmentElement);
 
         } else {
             LOGGER.error("No such element " + equipmentElement.getTagName());
@@ -104,27 +112,27 @@ public class DOMEquipmentBuilder {
 
     private void setArmorEquipment(BaseEquipment equipment, Element equipmentElement) {
         setBaseEquipment(equipment, equipmentElement);
-        ((ArmorEquipment)equipment).setArmorValue(Integer.parseInt(getElementTextContent(equipmentElement
+        ((ArmorEquipment) equipment).setArmorValue(Integer.parseInt(getElementTextContent(equipmentElement
                 , EquipmentEnum.ARMOR.getValue())));
     }
 
     private void setWeaponEquipment(BaseEquipment equipment, Element equipmentElement) {
         setBaseEquipment(equipment, equipmentElement);
-        ((WeaponEquipment)equipment).setDamageValue(Integer.parseInt(getElementTextContent(equipmentElement
+        ((WeaponEquipment) equipment).setDamageValue(Integer.parseInt(getElementTextContent(equipmentElement
                 , EquipmentEnum.DAMAGE.getValue())));
     }
 
     private void setTorsoArmor(BaseEquipment equipment, Element equipmentElement) {
         setArmorEquipment(equipment, equipmentElement);
-        ((TorsoArmor)equipment).setChestGirth(Double.parseDouble(getElementTextContent(equipmentElement
+        ((TorsoArmor) equipment).setChestGirth(Double.parseDouble(getElementTextContent(equipmentElement
                 , EquipmentEnum.CHEST_GIRTH.getValue())));
-        ((TorsoArmor)equipment).setWaistGirth(Double.parseDouble(getElementTextContent(equipmentElement
+        ((TorsoArmor) equipment).setWaistGirth(Double.parseDouble(getElementTextContent(equipmentElement
                 , EquipmentEnum.WAIST_GIRTH.getValue())));
     }
 
     private void setCuttingWeapon(BaseEquipment equipment, Element equipmentElement) {
         setWeaponEquipment(equipment, equipmentElement);
-        ((CuttingWeapon)equipment).setCuttingDamage(Integer.parseInt(getElementTextContent(equipmentElement
+        ((CuttingWeapon) equipment).setCuttingDamage(Integer.parseInt(getElementTextContent(equipmentElement
                 , EquipmentEnum.CUTTING_DAMAGE.getValue())));
     }
 

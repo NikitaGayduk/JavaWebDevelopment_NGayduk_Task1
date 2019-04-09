@@ -18,12 +18,6 @@ public class BaseEquipmentTest {
         assertEquals(BaseEquipment.WearDegree.UNBROKEN, equip.getEquipmentState());
     }
 
-    @Test (expected = IllegalPriceException.class)
-    public void setIllegalPriceTest() throws IllegalPriceException {
-        equip = new BaseEquipment();
-        equip.setPrice(-10);
-    }
-
     @Test
     public void setPriceTest() throws IllegalPriceException {
         equip = new BaseEquipment();

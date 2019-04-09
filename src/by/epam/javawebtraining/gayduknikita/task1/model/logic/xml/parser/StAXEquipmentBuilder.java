@@ -17,23 +17,25 @@ import javax.xml.stream.XMLStreamReader;
  * @author NikitaGayduk
  * @date 08.04.2019
  */
-public class StAXEquipmentBuilder {
+public class StAXEquipmentBuilder extends AbstractEquipmentBuilder {
     private static final Logger LOGGER = Logger.getRootLogger();
 
-    private BaseBag equipmentBag;
     private EnumSet<EquipmentEnum> types;
     private XMLInputFactory inputFactory;
 
-    public StAXEquipmentBuilder() {
-        equipmentBag = new BaseBag();
+    {
         types = EnumSet.range(EquipmentEnum.BASE_EQUIPMENT, EquipmentEnum.CUTTING_WEAPON);
         inputFactory = XMLInputFactory.newInstance();
     }
 
-    public BaseBag getEquipmentBag() {
-        return equipmentBag;
+    public StAXEquipmentBuilder() {
     }
 
+    public StAXEquipmentBuilder(BaseBag equipmentBag) {
+        super(equipmentBag);
+    }
+
+    @Override
     public void buildEquipmentBag(String xmlName) {
         String name;
 

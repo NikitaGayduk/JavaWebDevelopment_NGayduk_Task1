@@ -107,13 +107,13 @@ public class ArrayCollection implements Collection {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        ArrayCollection that = (ArrayCollection) o;
+        Collection that = (Collection) o;
 
         if (this.getSize() != that.getSize()) {
             return false;
         }
 
-        for (int ptr = 0; ptr < equipArray.length; ptr++) {
+        for (int ptr = 0; ptr < this.ptr; ptr++) {
             if (!this.get(ptr).equals(that.get(ptr))) {
                 return false;
             }
