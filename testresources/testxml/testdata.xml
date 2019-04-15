@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<equipment 
+	xmlns="MyDefaultNamespace"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="MyDefaultNamespace testschema.xsd">
+
+	<base_equipment equipment_ID="1">
+		<price>300</price>
+		<state>UNBROKEN</state>
+	</base_equipment>
+
+	<armor_equipment equipment_ID="2">
+		<price>400</price>
+		<state>THREADBARE</state>
+		<armor>100</armor>
+	</armor_equipment>
+		
+	<torso_armor equipment_ID="3">
+		<price>700</price>
+		<state>SLIGHTLY_WORN</state>
+		<armor>300</armor>
+		<waist_girth>83.5</waist_girth>
+		<chest_girth>110.7</chest_girth>
+	</torso_armor>
+	
+	<weapon_equipment equipment_ID="4">
+		<price>400</price>
+		<state>BROKEN</state>
+		<damage>300</damage>
+	</weapon_equipment>
+		
+	<cutting_weapon equipment_ID="5">
+		<price>650</price>
+		<state>SLIGHTLY_WORN</state>
+		<damage>250</damage>
+		<cutting_damage>200</cutting_damage>
+	</cutting_weapon>
+</equipment>

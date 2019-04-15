@@ -1,31 +1,28 @@
 package by.epam.javawebtraining.gayduknikita.task1;
 
-
-import by.epam.javawebtraining.gayduknikita.task1.model.entity.*;
-import by.epam.javawebtraining.gayduknikita.task1.model.logic.xml.parser.DOMEquipmentBuilder;
-import by.epam.javawebtraining.gayduknikita.task1.model.logic.xml.parser.SAXEquipmentBuilder;
-import by.epam.javawebtraining.gayduknikita.task1.model.logic.xml.parser.StAXEquipmentBuilder;
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.calculator.BaseCalculator;
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.calculator.Calculator;
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.xml.factory.EquipmentBuilderFactory;
+import by.epam.javawebtraining.gayduknikita.task1.model.logic.xml.parser.AbstractEquipmentBuilder;
 import by.epam.javawebtraining.gayduknikita.task1.model.logic.xml.validator.XSDSAXValidator;
 
 public class Main {
 
     public static void main(String[] args) {
 
-/*        XSDSAXValidator validator = new XSDSAXValidator();
+        XSDSAXValidator validator = new XSDSAXValidator();
         System.out.println(validator.isValid("testresources/testxml/testdata.xml"
-                , "testresources/testxml/schema.xsd"));
+                , "testresources/testxml/testschema.xsd"));
 
-        SAXEquipmentBuilder parser = new SAXEquipmentBuilder();
-        parser.buildEquipmentBag("testresources/testxml/testdata.xml");
-        System.out.println(parser.getEquipmentBag());
+        EquipmentBuilderFactory factory = new EquipmentBuilderFactory();
 
-        DOMEquipmentBuilder parser = new DOMEquipmentBuilder();
-        parser.buildEquipmentBag("testresources/testxml/testdata.xml");
-        System.out.println(parser.getEquipmentBag());
+        AbstractEquipmentBuilder builder = factory.createEquipmentBuilder("DOM");
 
-        StAXEquipmentBuilder parser = new StAXEquipmentBuilder();
-        parser.buildEquipmentBag("xml/data.xml");
-        System.out.println(parser.getEquipmentBag());*/
+        builder.buildEquipmentBag("testresources/testxml/testdata.xml");
+        System.out.println(builder.getEquipmentBag());
+
+        Calculator calculator = new BaseCalculator();
+        System.out.println(calculator.calculate(builder.getEquipmentBag()));
 
     }
 }

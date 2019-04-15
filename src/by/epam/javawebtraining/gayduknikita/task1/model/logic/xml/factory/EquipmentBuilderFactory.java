@@ -13,7 +13,8 @@ public class EquipmentBuilderFactory {
     private enum TypeParser {
         SAX, STAX, DOM
     }
-    public AbstractEquipmentBuilder createStudentBuilder(String typeParser) {
+
+    public AbstractEquipmentBuilder createEquipmentBuilder(String typeParser) {
         TypeParser type = TypeParser.valueOf(typeParser);
         switch (type) {
             case DOM:
